@@ -37,8 +37,8 @@ A chat interface powered by Hugging Face's API router, built with React, TypeScr
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/hf-chat.git
-cd hf-chat
+git clone https://github.com/JustinDouglas16/react-chat-app.git
+cd react-chat-app
 ```
 
 ### 2. Install dependencies
