@@ -129,3 +129,7 @@ const completion = await client.chat.completions.create({
 
 Browse available models at
 [huggingface.co/models](https://huggingface.co/models).
+
+## License
+
+MIT
