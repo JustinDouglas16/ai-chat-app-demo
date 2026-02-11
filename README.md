@@ -1,73 +1,131 @@
-# React + TypeScript + Vite
+# React chat app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A chat interface powered by Hugging Face's API router, built with React, TypeScript, shadcn/ui, Tailwind CSS v4, and Express.
 
-Currently, two official plugins are available:
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- 💬 Real-time chat with AI models via Hugging Face
+- 🎨 Clean dark UI with shadcn/ui components
+- 📝 Markdown rendering (tables, code blocks, bold, etc.)
+- ⌨️ Send with Enter, new line with Shift+Enter
+- 🔒 API key stays secure on the server
+- 🧹 Clear conversation history
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Layer    | Technology                          |
+| -------- | ----------------------------------- |
+| Frontend | React 19 + TypeScript + Vite        |
+| UI       | shadcn/ui + Tailwind CSS v4         |
+| Markdown | react-markdown + remark-gfm         |
+| Backend  | Express 5                           |
+| AI       | OpenAI SDK → Hugging Face Router    |
+| Icons    | Lucide React                        |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Node.js](https://nodejs.org/) 18 or higher
+- A [Hugging Face](https://huggingface.co/settings/tokens) API token
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/hf-chat.git
+cd hf-chat
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the root directory:
+
+```text
+HF_TOKEN=hf_your_token_here
+```
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+This starts both the Vite dev server (port 5173) and the Express API
+(port 3001) concurrently.
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### 5. Production build
+
+```bash
+npm run build
+npm start
+```
+
+This builds the React frontend into `dist/` and starts the Express
+server which serves both the API and the static files.
+
+## Project Structure
+
+```text
+hf-chat/
+├── public/
+├── server/
+│   └── index.ts              # Express API server
+├── src/
+│   ├── components/
+│   │   ├── chat/
+│   │   │   ├── ChatContainer.tsx
+│   │   │   ├── ChatInput.tsx
+│   │   │   └── ChatMessage.tsx
+│   │   └── ui/               # shadcn/ui components
+│   ├── hooks/
+│   │   └── useChat.ts        # Chat state management
+│   ├── lib/
+│   │   ├── types.ts
+│   │   └── utils.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── .env                       # API keys (not committed)
+├── .gitignore
+├── components.json            # shadcn config
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Available Scripts
+
+| Command         | Description                                  |
+| --------------- | -------------------------------------------- |
+| `npm run dev`   | Start both frontend and backend in dev mode  |
+| `npm run build` | Build the frontend for production            |
+| `npm start`     | Start the production server                  |
+| `npm run lint`  | Run ESLint                                   |
+
+## Changing the Model
+
+To use a different model, update the `model` field in
+`server/index.ts`:
+
+```ts
+const completion = await client.chat.completions.create({
+  model: "openai/gpt-oss-120b:groq", // Change this
+  messages,
+});
+```
+
+Browse available models at
+[huggingface.co/models](https://huggingface.co/models).
