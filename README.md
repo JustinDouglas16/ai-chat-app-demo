@@ -22,12 +22,14 @@ A chat interface powered by Hugging Face's API router, built with React, TypeScr
   - OpenRouter provides a unified API for 200+ models (OpenAI, Anthropic, Google, Meta, etc.)
   - Uses the same OpenAI SDK compatible format
   - Would only require changing `baseURL` and `apiKey` in `server/index.ts`:
+
     ```ts
     const client = new OpenAI({
       baseURL: "https://openrouter.ai/api/v1",
       apiKey: process.env.OPENROUTER_API_KEY,
     });
     ```
+
   - Browse models at [openrouter.ai/models](https://openrouter.ai/models)
 - [ ] Add streaming responses (Server-Sent Events)
 - [ ] Add model selector dropdown in the UI
