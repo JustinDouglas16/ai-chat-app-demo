@@ -5,10 +5,16 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useChat } from "@/hooks/useChat";
-import { Loader2, Trash2, BotMessageSquare } from "lucide-react";
+import {
+  Loader2,
+  Trash2,
+  BotMessageSquare,
+  Square,
+} from "lucide-react";
 
 export function ChatContainer() {
-  const { messages, isLoading, sendMessage, clearMessages } = useChat();
+  const { messages, isLoading, sendMessage, stopGenerating, clearMessages } =
+    useChat();
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +31,7 @@ export function ChatContainer() {
           </div>
           <div>
             <h1 className="text-lg font-semibold text-foreground">
-              React Chat App
+              HF Chat
             </h1>
             <p className="text-xs text-muted-foreground">
               Powered by Hugging Face
@@ -73,13 +79,30 @@ export function ChatContainer() {
           {isLoading && (
             <div className="flex items-center gap-3 rounded-xl bg-blue-surface px-4 py-3">
               <Loader2 className="h-4 w-4 animate-spin text-blue-bright" />
-              <span className="text-sm text-blue-bright">Thinking...</span>
+              <span className="text-sm text-blue-bright">
+                Streaming...
+              </span>
             </div>
           )}
 
           <div ref={bottomRef} />
         </div>
       </ScrollArea>
+
+      {/* Stop button */}
+      {isLoading && (
+        <div className="flex justify-center py-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={stopGenerating}
+            className="gap-2 border-border/50 text-muted-foreground hover:text-foreground"
+          >
+            <Square className="h-3 w-3 fill-current" />
+            Stop generating
+          </Button>
+        </div>
+      )}
 
       {/* Input */}
       <div className="mx-auto w-full max-w-3xl">

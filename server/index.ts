@@ -20,14 +20,38 @@ const client = new OpenAI({
 app.post("/api/chat", async (req, res) => {
   try {
     const { messages } = req.body;
-    const completion = await client.chat.completions.create({
-      model: "openai/gpt-oss-120b:groq",
+
+    // Set SSE headers
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+
+    const stream = await client.chat.completions.create({
+      model: "openai/gpt-oss-120b:fastest",
       messages,
+      stream: true,
     });
-    res.json(completion.choices[0].message);
+
+    for await (const chunk of stream) {
+      const content = chunk.choices[0]?.delta?.content || "";
+      if (content) {
+        res.write(`data: ${JSON.stringify({ content })}\n\n`);
+      }
+    }
+
+    res.write("data: [DONE]\n\n");
+    res.end();
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Something went wrong" });
+    // If headers haven't been sent yet, send error as JSON
+    if (!res.headersSent) {
+      res.status(500).json({ error: "Something went wrong" });
+    } else {
+      res.write(
+        `data: ${JSON.stringify({ error: "Something went wrong" })}\n\n`,
+      );
+      res.end();
+    }
   }
 });
 
@@ -36,11 +60,6 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.get("/{*splat}", (_req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
-
-// old express v4
-// app.get("*", (_req, res) => {
-//   res.sendFile(path.join(__dirname, "../dist/index.html"));
-// });
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
