@@ -72,9 +72,17 @@ Create a `.env` file in the root directory:
 
 ```text
 HF_TOKEN=hf_your_token_here
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/chatdb
 ```
 
-### 4. Start the development server
+### 4. Run database migrations
+
+```bash
+npm run db:generate
+npm run db:migrate
+```
+
+### 5. Start the development server
 
 ```bash
 npm run dev
@@ -85,7 +93,7 @@ This starts both the Vite dev server (port 5173) and the Express API
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### 5. Production build
+### 6. Production build
 
 ```bash
 npm run build
