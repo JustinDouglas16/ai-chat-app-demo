@@ -59,7 +59,8 @@
   --card-foreground: oklch(0.15 0.02 260);
   --popover: oklch(1 0.003 260);
   --popover-foreground: oklch(0.15 0.02 260);
-  --primary: oklch(0.55 0.2 260);
+  /* --primary: oklch(0.55 0.2 260); */
+  --primary: rgb(0 29 109);
   --primary-foreground: oklch(0.98 0.005 260);
   --secondary: oklch(0.94 0.02 260);
   --secondary-foreground: oklch(0.2 0.03 260);
@@ -70,25 +71,33 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.9 0.02 260);
   --input: oklch(0.9 0.02 260);
-  --ring: oklch(0.55 0.2 260);
-  --chart-1: oklch(0.55 0.2 260);
+  /* --ring: oklch(0.55 0.2 260);
+  --chart-1: oklch(0.55 0.2 260); */
+  --ring: rgb(0 29 109);
+  --chart-1: rgb(0 29 109);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.96 0.01 260);
   --sidebar-foreground: oklch(0.15 0.02 260);
-  --sidebar-primary: oklch(0.55 0.2 260);
+  /* --sidebar-primary: oklch(0.55 0.2 260); */
+  --sidebar-primary: rgb(0 29 109);
   --sidebar-primary-foreground: oklch(0.98 0.005 260);
   --sidebar-accent: oklch(0.94 0.02 260);
   --sidebar-accent-foreground: oklch(0.2 0.03 260);
   --sidebar-border: oklch(0.9 0.02 260);
   --sidebar-ring: oklch(0.55 0.2 260);
 
-  --blue-subtle: oklch(0.7 0.1 260);
+  /* --blue-subtle: oklch(0.7 0.1 260);
   --blue-glow: oklch(0.55 0.2 260);
   --blue-bright: oklch(0.6 0.2 260);
-  --blue-surface: oklch(0.93 0.02 260);
+  --blue-surface: oklch(0.93 0.02 260); */
+
+  --blue-subtle: rgb(0 29 109 / 0.75);
+  --blue-glow: rgb(0 29 109);
+  --blue-bright: rgb(0 29 109);
+  --blue-surface: rgb(0 29 109 / 0.12);
 }
 
 .dark {
@@ -124,10 +133,15 @@
   --sidebar-border: oklch(0.25 0.04 260);
   --sidebar-ring: oklch(0.6 0.18 260);
 
-  --blue-subtle: oklch(0.35 0.1 260);
+  /* --blue-subtle: oklch(0.35 0.1 260);
   --blue-glow: oklch(0.55 0.2 260);
   --blue-bright: oklch(0.65 0.22 260);
-  --blue-surface: oklch(0.18 0.04 260);
+  --blue-surface: oklch(0.18 0.04 260); */
+
+  --blue-subtle: rgb(0 29 109 / 0.75);
+  --blue-glow: rgb(0 29 109);
+  --blue-bright: rgb(0 29 109);
+  --blue-surface: rgb(0 29 109 / 0.18);
 }
 
 @layer base {

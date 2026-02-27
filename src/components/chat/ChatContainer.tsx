@@ -57,11 +57,11 @@ export function ChatContainer({
           </div>
           <div>
             <h1 className="text-lg font-semibold text-foreground">
-              HF Chat
+              Unasat Chat
             </h1>
-            <p className="text-xs text-muted-foreground">
+            {/* <p className="text-xs text-muted-foreground">
               Powered by Hugging Face
-            </p>
+            </p> */}
           </div>
         </div>
         <ThemeToggle />
