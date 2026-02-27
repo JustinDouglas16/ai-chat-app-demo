@@ -50,7 +50,7 @@ export function ChatContainer({
   };
 
   return (
-    <div className="flex flex-1 flex-col bg-background">
+    <div className="flex min-h-0 flex-1 flex-col bg-background">
       {/* Header */}
       <header className="flex items-center justify-between border-b border-border/50 bg-card/50 px-6 py-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
@@ -70,7 +70,7 @@ export function ChatContainer({
       </header>
 
       {/* Messages */}
-      <ScrollArea className="flex-1 px-4">
+      <ScrollArea className="min-h-0 flex-1 px-4">
         <div className="mx-auto flex max-w-3xl flex-col gap-5 py-6">
           {!conversationId && (
             <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">

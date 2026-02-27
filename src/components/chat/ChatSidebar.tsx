@@ -26,7 +26,7 @@ export function ChatSidebar({
   onDelete,
 }: ChatSidebarProps) {
   return (
-    <div className="flex h-full w-64 flex-col bg-card/50 border-r border-border/50">
+    <div className="flex h-full w-64 shrink-0 flex-col border-r border-border/50 bg-card/50">
       {/* New chat button */}
       <div className="p-3">
         <Button
@@ -41,7 +41,7 @@ export function ChatSidebar({
       <Separator className="bg-border/50" />
 
       {/* Conversation list */}
-      <div className="flex-1 overflow-y-auto p-2">
+      <div className="min-h-0 flex-1 overflow-y-auto p-2">
         {conversations.length === 0 && (
           <p className="px-3 py-6 text-center text-sm text-muted-foreground">
             No conversations yet

@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
       <ChatSidebar
         conversations={conversations}
         activeId={activeId}
