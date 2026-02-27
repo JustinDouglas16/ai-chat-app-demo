@@ -5,28 +5,20 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useChat } from "@/hooks/useChat";
-import {
-  Loader2,
-  BotMessageSquare,
-  Square,
-} from "lucide-react";
+import { Loader2, BotMessageSquare, Square } from "lucide-react";
 
 interface ChatContainerProps {
   conversationId: string | null;
-  onFirstMessage?: () => void;
+  // onFirstMessage?: () => void;
+  onFirstMessage?: () => Promise<string | null>;
 }
 
 export function ChatContainer({
   conversationId,
   onFirstMessage,
 }: ChatContainerProps) {
-  const {
-    messages,
-    isLoading,
-    sendMessage,
-    stopGenerating,
-    loadMessages,
-  } = useChat(conversationId);
+  const { messages, isLoading, sendMessage, stopGenerating, loadMessages } =
+    useChat(conversationId);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,11 +32,21 @@ export function ChatContainer({
   }, [messages, isLoading]);
 
   const handleSend = async (content: string) => {
-    if (!conversationId && onFirstMessage) {
-      onFirstMessage();
-      return;
+    // if (!conversationId && onFirstMessage) {
+    //   onFirstMessage();
+    //   return;
+    // }
+    // await sendMessage(content);
+
+    let targetConversationId = conversationId;
+
+    if (!targetConversationId && onFirstMessage) {
+      targetConversationId = await onFirstMessage();
     }
-    await sendMessage(content);
+
+    if (!targetConversationId) return;
+
+    await sendMessage(content, targetConversationId);
   };
 
   return (
@@ -109,9 +111,7 @@ export function ChatContainer({
           {isLoading && (
             <div className="flex items-center gap-3 rounded-xl bg-blue-surface px-4 py-3">
               <Loader2 className="h-4 w-4 animate-spin text-blue-bright" />
-              <span className="text-sm text-blue-bright">
-                Streaming...
-              </span>
+              <span className="text-sm text-blue-bright">Streaming...</span>
             </div>
           )}
 
@@ -138,7 +138,7 @@ export function ChatContainer({
       <div className="mx-auto w-full max-w-3xl">
         <ChatInput
           onSend={handleSend}
-          disabled={isLoading || !conversationId}
+          disabled={isLoading}
         />
       </div>
     </div>

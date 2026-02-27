@@ -22,16 +22,17 @@ export function useChat(conversationId: string | null) {
   }, []);
 
   const sendMessage = useCallback(
-    async (content: string) => {
-      if (!conversationId) return;
+    // async (content: string) => {
+    //   if (!conversationId) return;
+    async (content: string, targetConversationId?: string | null) => {
+      const activeConversationId = targetConversationId ?? conversationId;
+
+      if (!activeConversationId) return;
 
       const userMessage: Message = { role: "user", content };
       const updatedMessages = [...messages, userMessage];
 
-      setMessages([
-        ...updatedMessages,
-        { role: "assistant", content: "" },
-      ]);
+      setMessages([...updatedMessages, { role: "assistant", content: "" }]);
       setIsLoading(true);
 
       abortControllerRef.current = new AbortController();
@@ -42,7 +43,7 @@ export function useChat(conversationId: string | null) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             messages: updatedMessages,
-            conversationId,
+            conversationId: activeConversationId,
           }),
           signal: abortControllerRef.current.signal,
         });
@@ -100,10 +101,7 @@ export function useChat(conversationId: string | null) {
           }
         }
       } catch (err) {
-        if (
-          err instanceof DOMException &&
-          err.name === "AbortError"
-        ) {
+        if (err instanceof DOMException && err.name === "AbortError") {
           return;
         }
         setMessages((prev) => {

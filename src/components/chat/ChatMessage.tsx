@@ -17,7 +17,9 @@ export function ChatMessage({ message }: ChatMessageProps) {
         <AvatarFallback
           className={cn(
             "text-xs font-medium",
-            isUser ? "bg-[rgba(211,85,0,1)] text-white" : "bg-[rgba(0,29,109,1)] text-white",
+            isUser
+              ? "bg-[rgba(211,85,0,1)] text-white"
+              : "bg-[rgba(0,29,109,1)] text-white",
           )}
         >
           {isUser ? "You" : "AI"}
@@ -27,7 +29,9 @@ export function ChatMessage({ message }: ChatMessageProps) {
       <div
         className={cn(
           "max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
-          isUser ? "bg-blue-600 text-white" : "bg-muted text-foreground",
+          isUser
+            ? "bg-[rgba(211,85,0,1)] text-white"
+            : "bg-[rgba(0,29,109,1)] text-white",
         )}
       >
         {isUser ? (

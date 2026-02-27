@@ -22,9 +22,10 @@ function App() {
   };
 
   const handleCreate = async () => {
-    await createConversation();
+    const newConversationId =  await createConversation();
     // Refresh list to get updated data
     await fetchConversations();
+    return newConversationId;
   };
 
   const handleDelete = async (id: string) => {
