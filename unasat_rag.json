@@ -1,0 +1,940 @@
+[
+  {
+    "id": "unasat_001",
+    "question": "Hoe weet ik in welk lokaal ik moet zijn?",
+    "answer": "Het lokaal wordt vermeld op het informatiebord bij de grote ingang en in uw rooster op SharePoint.",
+    "combined_text": "Vraag: Hoe weet ik in welk lokaal ik moet zijn? Antwoord: Het lokaal wordt vermeld op het informatiebord bij de grote ingang en in uw rooster op SharePoint.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_002",
+    "question": "Waar kan ik mijn lesrooster vinden?",
+    "answer": "Uw lesrooster is beschikbaar via SharePoint na (her)inschrijving.",
+    "combined_text": "Vraag: Waar kan ik mijn lesrooster vinden? Antwoord: Uw lesrooster is beschikbaar via SharePoint na (her)inschrijving.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_003",
+    "question": "Ik ben te laat met mijn herinschrijving. Wat moet ik doen?",
+    "answer": "De herinschrijvingsperiode is afgesloten. Neem contact op met uw opleidingscordinator.",
+    "combined_text": "Vraag: Ik ben te laat met mijn herinschrijving. Wat moet ik doen? Antwoord: De herinschrijvingsperiode is afgesloten. Neem contact op met uw opleidingscordinator.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_004",
+    "question": "Wat is de OER?",
+    "answer": "De Onderwijs- en Examenregeling (OER) bevat alle regels rondom uw studie en examens.",
+    "combined_text": "Vraag: Wat is de OER? Antwoord: De Onderwijs- en Examenregeling (OER) bevat alle regels rondom uw studie en examens.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_005",
+    "question": "Waar staat de OER?",
+    "answer": "De OER is te vinden op de UNASAT-website onder Studenteninformatie.",
+    "combined_text": "Vraag: Waar staat de OER? Antwoord: De OER is te vinden op de UNASAT-website onder Studenteninformatie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_006",
+    "question": "Waar vind ik handleidingen en statuten van UNASAT?",
+    "answer": "Deze documenten zijn beschikbaar op www.unasat.sr.",
+    "combined_text": "Vraag: Waar vind ik handleidingen en statuten van UNASAT? Antwoord: Deze documenten zijn beschikbaar op www.unasat.sr.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_007",
+    "question": "Met wie kan ik contact opnemen bij studiegerelateerde vragen?",
+    "answer": "U kunt contact opnemen met de opleidingscordinator van uw studierichting.",
+    "combined_text": "Vraag: Met wie kan ik contact opnemen bij studiegerelateerde vragen? Antwoord: U kunt contact opnemen met de opleidingscordinator van uw studierichting.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_008",
+    "question": "Waar kan ik algemene informatie over UNASAT vinden?",
+    "answer": "Algemene informatie is beschikbaar op www.unasat.sr.",
+    "combined_text": "Vraag: Waar kan ik algemene informatie over UNASAT vinden? Antwoord: Algemene informatie is beschikbaar op www.unasat.sr.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_009",
+    "question": "Wat is UNASAT?",
+    "answer": "UNASAT staat voor University of Applied Sciences and Technology, een hogeschool in Suriname.",
+    "combined_text": "Vraag: Wat is UNASAT? Antwoord: UNASAT staat voor University of Applied Sciences and Technology, een hogeschool in Suriname.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_010",
+    "question": "Waar is UNASAT gevestigd?",
+    "answer": "De hoofdvestiging is aan de Hindilaan 5 in Paramaribo, nabij het universiteitscomplex.",
+    "combined_text": "Vraag: Waar is UNASAT gevestigd? Antwoord: De hoofdvestiging is aan de Hindilaan 5 in Paramaribo, nabij het universiteitscomplex.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_011",
+    "question": "Heeft UNASAT een vestiging in Nickerie?",
+    "answer": "Ja, UNASAT heeft ook een vestiging in Nieuw-Nickerie voor studenten in dat district.",
+    "combined_text": "Vraag: Heeft UNASAT een vestiging in Nickerie? Antwoord: Ja, UNASAT heeft ook een vestiging in Nieuw-Nickerie voor studenten in dat district.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_012",
+    "question": "Hoe kan ik UNASAT telefonisch bereiken?",
+    "answer": "U kunt bellen naar +597 465558.",
+    "combined_text": "Vraag: Hoe kan ik UNASAT telefonisch bereiken? Antwoord: U kunt bellen naar +597 465558.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_013",
+    "question": "Wat is het e-mailadres van de studentenadministratie?",
+    "answer": "U kunt mailen naar stuza@uvs.edu voor al uw vragen aan Bureau Studentenzaken.",
+    "combined_text": "Vraag: Wat is het e-mailadres van de studentenadministratie? Antwoord: U kunt mailen naar stuza@uvs.edu voor al uw vragen aan Bureau Studentenzaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_014",
+    "question": "Welke ICT-opleidingen biedt UNASAT aan?",
+    "answer": "UNASAT biedt Software Engineering, System Network Engineering en Bedrijfskundige Informatica aan.",
+    "combined_text": "Vraag: Welke ICT-opleidingen biedt UNASAT aan? Antwoord: UNASAT biedt Software Engineering, System Network Engineering en Bedrijfskundige Informatica aan.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_015",
+    "question": "Welke Business-opleidingen zijn er?",
+    "answer": "U kunt kiezen uit Bedrijfskunde, Bedrijfseconomie en Communicatiemanagement.",
+    "combined_text": "Vraag: Welke Business-opleidingen zijn er? Antwoord: U kunt kiezen uit Bedrijfskunde, Bedrijfseconomie en Communicatiemanagement.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_016",
+    "question": "Wat is de AD Ondernemerschap?",
+    "answer": "Dit is een tweejarige Associate Degree opleiding gericht op startende en groeiende ondernemers.",
+    "combined_text": "Vraag: Wat is de AD Ondernemerschap? Antwoord: Dit is een tweejarige Associate Degree opleiding gericht op startende en groeiende ondernemers.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_017",
+    "question": "Zijn de opleidingen internationaal erkend?",
+    "answer": "Ja, de programma's zijn ontwikkeld in samenwerking met de Hogeschool van Amsterdam.",
+    "combined_text": "Vraag: Zijn de opleidingen internationaal erkend? Antwoord: Ja, de programma's zijn ontwikkeld in samenwerking met de Hogeschool van Amsterdam.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_018",
+    "question": "Krijg ik een titel na mijn studie?",
+    "answer": "Na het afronden van een bacheloropleiding ontvangt u de graad van Bachelor (Bsc of BA).",
+    "combined_text": "Vraag: Krijg ik een titel na mijn studie? Antwoord: Na het afronden van een bacheloropleiding ontvangt u de graad van Bachelor (Bsc of BA).",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_019",
+    "question": "Wat is de duur van een bacheloropleiding?",
+    "answer": "De meeste bacheloropleidingen bij UNASAT duren vier jaar.",
+    "combined_text": "Vraag: Wat is de duur van een bacheloropleiding? Antwoord: De meeste bacheloropleidingen bij UNASAT duren vier jaar.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_020",
+    "question": "Worden de lessen overdag of 's avonds gegeven?",
+    "answer": "De meeste opleidingen worden in de middag- en avonduren verzorgd.",
+    "combined_text": "Vraag: Worden de lessen overdag of 's avonds gegeven? Antwoord: De meeste opleidingen worden in de middag- en avonduren verzorgd.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_021",
+    "question": "Hoe laat beginnen de lessen meestal?",
+    "answer": "De lessen starten doorgaans om 18:00 uur.",
+    "combined_text": "Vraag: Hoe laat beginnen de lessen meestal? Antwoord: De lessen starten doorgaans om 18:00 uur.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_022",
+    "question": "Wat zijn de algemene toelatingseisen?",
+    "answer": "Minimaal een VWO- of HAVO-diploma, of een afgeronde mbo-opleiding op niveau 4 (zoals NATIN of AMTO).",
+    "combined_text": "Vraag: Wat zijn de algemene toelatingseisen? Antwoord: Minimaal een VWO- of HAVO-diploma, of een afgeronde mbo-opleiding op niveau 4 (zoals NATIN of AMTO).",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_023",
+    "question": "Kan ik me inschrijven met een NATIN-diploma?",
+    "answer": "Ja, met een relevant NATIN-diploma bent u toelaatbaar tot de technische opleidingen.",
+    "combined_text": "Vraag: Kan ik me inschrijven met een NATIN-diploma? Antwoord: Ja, met een relevant NATIN-diploma bent u toelaatbaar tot de technische opleidingen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_024",
+    "question": "Wat is het 21+ toelatingsonderzoek?",
+    "answer": "Dit is een test voor personen van 21 jaar of ouder die niet over de juiste diploma's beschikken maar wel op hbo-niveau willen studeren.",
+    "combined_text": "Vraag: Wat is het 21+ toelatingsonderzoek? Antwoord: Dit is een test voor personen van 21 jaar of ouder die niet over de juiste diploma's beschikken maar wel op hbo-niveau willen studeren.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_025",
+    "question": "Hoe kan ik me aanmelden voor de 21+ toets?",
+    "answer": "Neem hiervoor contact op met Bureau Studentenzaken voor de procedure en data.",
+    "combined_text": "Vraag: Hoe kan ik me aanmelden voor de 21+ toets? Antwoord: Neem hiervoor contact op met Bureau Studentenzaken voor de procedure en data.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_026",
+    "question": "Wat is een schakeltraject?",
+    "answer": "Een voortraject om uw kennis op het juiste niveau te brengen voor de start van de eigenlijke opleiding.",
+    "combined_text": "Vraag: Wat is een schakeltraject? Antwoord: Een voortraject om uw kennis op het juiste niveau te brengen voor de start van de eigenlijke opleiding.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_027",
+    "question": "Hoe kan ik me officieel inschrijven?",
+    "answer": "De inschrijving geschiedt meestal online via de website, gevolgd door het inleveren van documenten bij Bureau Studentenzaken.",
+    "combined_text": "Vraag: Hoe kan ik me officieel inschrijven? Antwoord: De inschrijving geschiedt meestal online via de website, gevolgd door het inleveren van documenten bij Bureau Studentenzaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_028",
+    "question": "Moet ik een intakegesprek voeren?",
+    "answer": "Bij sommige opleidingen is een orintatie- of intakegesprek verplicht.",
+    "combined_text": "Vraag: Moet ik een intakegesprek voeren? Antwoord: Bij sommige opleidingen is een orintatie- of intakegesprek verplicht.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_029",
+    "question": "Wanneer is de uiterste inschrijfdatum?",
+    "answer": "De inschrijving sluit meestal eind september. Kijk op de website voor de exacte datum.",
+    "combined_text": "Vraag: Wanneer is de uiterste inschrijfdatum? Antwoord: De inschrijving sluit meestal eind september. Kijk op de website voor de exacte datum.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_030",
+    "question": "Wat kost het collegegeld?",
+    "answer": "Het collegegeld wordt jaarlijks vastgesteld. Neem contact op met de financile administratie voor de huidige tarieven.",
+    "combined_text": "Vraag: Wat kost het collegegeld? Antwoord: Het collegegeld wordt jaarlijks vastgesteld. Neem contact op met de financile administratie voor de huidige tarieven.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_031",
+    "question": "Kan ik het lesgeld in termijnen betalen?",
+    "answer": "Ja, er zijn betalingsregelingen beschikbaar waarbij u in termijnen kunt betalen.",
+    "combined_text": "Vraag: Kan ik het lesgeld in termijnen betalen? Antwoord: Ja, er zijn betalingsregelingen beschikbaar waarbij u in termijnen kunt betalen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_032",
+    "question": "Zijn studieboeken bij het lesgeld inbegrepen?",
+    "answer": "Nee, de kosten voor boeken en licenties dient u zelf te betalen.",
+    "combined_text": "Vraag: Zijn studieboeken bij het lesgeld inbegrepen? Antwoord: Nee, de kosten voor boeken en licenties dient u zelf te betalen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_033",
+    "question": "Hoe kan ik betalen?",
+    "answer": "Betalingen kunnen meestal per bankoverschrijving of via een pinbetaling op kantoor worden gedaan.",
+    "combined_text": "Vraag: Hoe kan ik betalen? Antwoord: Betalingen kunnen meestal per bankoverschrijving of via een pinbetaling op kantoor worden gedaan.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_034",
+    "question": "Krijg ik mijn geld terug als ik stop?",
+    "answer": "Er is een restitutieregeling in de OER opgenomen",
+    "combined_text": "Vraag: Krijg ik mijn geld terug als ik stop? Antwoord: Er is een restitutieregeling in de OER opgenomen",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_035",
+    "question": "Wat gebeurt er als ik een betalingsachterstand heb?",
+    "answer": "Bij een achterstand kan de toegang tot SharePoint en de tentamens worden ontzegd.",
+    "combined_text": "Vraag: Wat gebeurt er als ik een betalingsachterstand heb? Antwoord: Bij een achterstand kan de toegang tot SharePoint en de tentamens worden ontzegd.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_036",
+    "question": "Hoe meld ik me aan voor een tentamen?",
+    "answer": "Inschrijving gaat meestal via het studenteninformatiesysteem of SharePoint.",
+    "combined_text": "Vraag: Hoe meld ik me aan voor een tentamen? Antwoord: Inschrijving gaat meestal via het studenteninformatiesysteem of SharePoint.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_037",
+    "question": "Wanneer zijn de herkansingen?",
+    "answer": "Herkansingen vinden doorgaans plaats in de periode na de reguliere tentamens.",
+    "combined_text": "Vraag: Wanneer zijn de herkansingen? Antwoord: Herkansingen vinden doorgaans plaats in de periode na de reguliere tentamens.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_038",
+    "question": "Hoe vaak mag ik een vak herkansen?",
+    "answer": "U heeft per studiejaar recht op n reguliere kans en n herkansing.",
+    "combined_text": "Vraag: Hoe vaak mag ik een vak herkansen? Antwoord: U heeft per studiejaar recht op n reguliere kans en n herkansing.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_039",
+    "question": "Wat is een voldoende cijfer?",
+    "answer": "Een 5.5 of hoger wordt beschouwd als een voldoende.",
+    "combined_text": "Vraag: Wat is een voldoende cijfer? Antwoord: Een 5.5 of hoger wordt beschouwd als een voldoende.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_040",
+    "question": "Waar kan ik mijn behaalde cijfers inzien?",
+    "answer": "Uw cijfers worden geregistreerd in het online studentenportaal.",
+    "combined_text": "Vraag: Waar kan ik mijn behaalde cijfers inzien? Antwoord: Uw cijfers worden geregistreerd in het online studentenportaal.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_041",
+    "question": "Hoe vraag ik een vrijstelling aan?",
+    "answer": "U dient een schriftelijk verzoek in bij de Examencommissie met bijbehorende bewijslast.",
+    "combined_text": "Vraag: Hoe vraag ik een vrijstelling aan? Antwoord: U dient een schriftelijk verzoek in bij de Examencommissie met bijbehorende bewijslast.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_042",
+    "question": "Wat doet de Examencommissie?",
+    "answer": "Zij bewaken de kwaliteit van de tentamens en beslissen over zaken als vrijstellingen en fraude.",
+    "combined_text": "Vraag: Wat doet de Examencommissie? Antwoord: Zij bewaken de kwaliteit van de tentamens en beslissen over zaken als vrijstellingen en fraude.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_043",
+    "question": "Kan ik mijn tentamen inzien?",
+    "answer": "Ja, na elk tentamen wordt er een inzagemoment georganiseerd door de docent.",
+    "combined_text": "Vraag: Kan ik mijn tentamen inzien? Antwoord: Ja, na elk tentamen wordt er een inzagemoment georganiseerd door de docent.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_044",
+    "question": "Wat als ik ziek ben tijdens een tentamen?",
+    "answer": "U moet zich direct (vr het tentamen) afmelden bij de opleidingscordinator en een doktersattest overleggen.",
+    "combined_text": "Vraag: Wat als ik ziek ben tijdens een tentamen? Antwoord: U moet zich direct (vr het tentamen) afmelden bij de opleidingscordinator en een doktersattest overleggen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_045",
+    "question": "Is er een aanwezigheidsplicht?",
+    "answer": "Voor veel vakken geldt een minimale aanwezigheid van 75% of 80% om deel te mogen nemen aan het tentamen.",
+    "combined_text": "Vraag: Is er een aanwezigheidsplicht? Antwoord: Voor veel vakken geldt een minimale aanwezigheid van 75% of 80% om deel te mogen nemen aan het tentamen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_046",
+    "question": "Wat is een propedeuse?",
+    "answer": "Dit is het getuigschrift dat u ontvangt na het succesvol afronden van alle vakken uit het eerste jaar.",
+    "combined_text": "Vraag: Wat is een propedeuse? Antwoord: Dit is het getuigschrift dat u ontvangt na het succesvol afronden van alle vakken uit het eerste jaar.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_047",
+    "question": "Is er Wi-Fi op de campus?",
+    "answer": "Ja, studenten hebben toegang tot het draadloze netwerk van UNASAT.",
+    "combined_text": "Vraag: Is er Wi-Fi op de campus? Antwoord: Ja, studenten hebben toegang tot het draadloze netwerk van UNASAT.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_048",
+    "question": "Kan ik gebruikmaken van een computerruimte?",
+    "answer": "Ja, er zijn computerfaciliteiten beschikbaar voor practica en zelfstudie.",
+    "combined_text": "Vraag: Kan ik gebruikmaken van een computerruimte? Antwoord: Ja, er zijn computerfaciliteiten beschikbaar voor practica en zelfstudie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_049",
+    "question": "Is er een kantine aanwezig?",
+    "answer": "Ja, er zijn faciliteiten op het complex waar u eten en drinken kunt kopen.",
+    "combined_text": "Vraag: Is er een kantine aanwezig? Antwoord: Ja, er zijn faciliteiten op het complex waar u eten en drinken kunt kopen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_050",
+    "question": "Waar kan ik parkeren?",
+    "answer": "Er is parkeergelegenheid rondom het gebouw aan de Hindilaan.",
+    "combined_text": "Vraag: Waar kan ik parkeren? Antwoord: Er is parkeergelegenheid rondom het gebouw aan de Hindilaan.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_051",
+    "question": "Is de campus beveiligd?",
+    "answer": "Ja, er is security aanwezig op het terrein voor de veiligheid van studenten en medewerkers.",
+    "combined_text": "Vraag: Is de campus beveiligd? Antwoord: Ja, er is security aanwezig op het terrein voor de veiligheid van studenten en medewerkers.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_052",
+    "question": "Heb ik een eigen laptop nodig?",
+    "answer": "Ja, zeker voor de ICT-opleidingen is het bezit van een eigen laptop verplicht.",
+    "combined_text": "Vraag: Heb ik een eigen laptop nodig? Antwoord: Ja, zeker voor de ICT-opleidingen is het bezit van een eigen laptop verplicht.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_053",
+    "question": "Welke software moet ik installeren?",
+    "answer": "Dit verschilt per vak. Docenten zullen aan het begin van het semester aangeven welke software nodig is.",
+    "combined_text": "Vraag: Welke software moet ik installeren? Antwoord: Dit verschilt per vak. Docenten zullen aan het begin van het semester aangeven welke software nodig is.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_054",
+    "question": "Heeft UNASAT een bibliotheek?",
+    "answer": "Studenten kunnen gebruikmaken van de mediatheek en de collectie van de AdeKUS.",
+    "combined_text": "Vraag: Heeft UNASAT een bibliotheek? Antwoord: Studenten kunnen gebruikmaken van de mediatheek en de collectie van de AdeKUS.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_055",
+    "question": "Moet ik stage lopen?",
+    "answer": "Ja, stage is een verplicht onderdeel van alle bacheloropleidingen bij UNASAT.",
+    "combined_text": "Vraag: Moet ik stage lopen? Antwoord: Ja, stage is een verplicht onderdeel van alle bacheloropleidingen bij UNASAT.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_056",
+    "question": "Wanneer begint de stage?",
+    "answer": "Meestal vindt de stage plaats in het derde of vierde jaar van de opleiding.",
+    "combined_text": "Vraag: Wanneer begint de stage? Antwoord: Meestal vindt de stage plaats in het derde of vierde jaar van de opleiding.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_057",
+    "question": "Moet ik zelf een stageplek zoeken?",
+    "answer": "Ja, u bent zelf verantwoordelijk voor het vinden van een plek, maar UNASAT kan u ondersteunen via de stagecordinator.",
+    "combined_text": "Vraag: Moet ik zelf een stageplek zoeken? Antwoord: Ja, u bent zelf verantwoordelijk voor het vinden van een plek, maar UNASAT kan u ondersteunen via de stagecordinator.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_058",
+    "question": "Mag ik stage lopen in het buitenland?",
+    "answer": "Ja, mits de stageplek voldoet aan de eisen van de opleiding en is goedgekeurd door de cordinator.",
+    "combined_text": "Vraag: Mag ik stage lopen in het buitenland? Antwoord: Ja, mits de stageplek voldoet aan de eisen van de opleiding en is goedgekeurd door de cordinator.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_059",
+    "question": "Wat is een afstudeerproject?",
+    "answer": "Dit is het laatste onderdeel van je studie waarbij je een onderzoek uitvoert of een product ontwikkelt voor een bedrijf.",
+    "combined_text": "Vraag: Wat is een afstudeerproject? Antwoord: Dit is het laatste onderdeel van je studie waarbij je een onderzoek uitvoert of een product ontwikkelt voor een bedrijf.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_060",
+    "question": "Hoe word ik begeleid tijdens het afstuderen?",
+    "answer": "U krijgt een begeleider vanuit UNASAT en een mentor vanuit het bedrijf waar u afstudeert.",
+    "combined_text": "Vraag: Hoe word ik begeleid tijdens het afstuderen? Antwoord: U krijgt een begeleider vanuit UNASAT en een mentor vanuit het bedrijf waar u afstudeert.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_061",
+    "question": "Hoe lang duurt het afstuderen?",
+    "answer": "Meestal staat hier n semester (ongeveer 20 weken) voor gepland.",
+    "combined_text": "Vraag: Hoe lang duurt het afstuderen? Antwoord: Meestal staat hier n semester (ongeveer 20 weken) voor gepland.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_062",
+    "question": "Wat is SharePoint?",
+    "answer": "SharePoint is de online omgeving waar u roosters, documenten en mededelingen vindt.",
+    "combined_text": "Vraag: Wat is SharePoint? Antwoord: SharePoint is de online omgeving waar u roosters, documenten en mededelingen vindt.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_063",
+    "question": "Ik ben mijn wachtwoord vergeten, wat nu?",
+    "answer": "U kunt contact opnemen met de ICT-helpdesk van UNASAT om uw wachtwoord te resetten.",
+    "combined_text": "Vraag: Ik ben mijn wachtwoord vergeten, wat nu? Antwoord: U kunt contact opnemen met de ICT-helpdesk van UNASAT om uw wachtwoord te resetten.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_064",
+    "question": "Wat is de voertaal van de opleiding?",
+    "answer": "De lessen worden in het Nederlands verzorgd, maar veel literatuur is in het Engels.",
+    "combined_text": "Vraag: Wat is de voertaal van de opleiding? Antwoord: De lessen worden in het Nederlands verzorgd, maar veel literatuur is in het Engels.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_065",
+    "question": "Zijn er studentenverenigingen?",
+    "answer": "UNASAT ondersteunt initiatieven voor studentenactiviteiten",
+    "combined_text": "Vraag: Zijn er studentenverenigingen? Antwoord: UNASAT ondersteunt initiatieven voor studentenactiviteiten",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_066",
+    "question": "Kan ik van studierichting veranderen?",
+    "answer": "Ja, dit kan in overleg met de opleidingscordinator, bij voorkeur vr het tweede leerjaar.",
+    "combined_text": "Vraag: Kan ik van studierichting veranderen? Antwoord: Ja, dit kan in overleg met de opleidingscordinator, bij voorkeur vr het tweede leerjaar.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_067",
+    "question": "Biedt UNASAT ook korte cursussen aan?",
+    "answer": "Ja, naast bachelors verzorgt UNASAT ook trainingen en korte cursussen voor professionals.",
+    "combined_text": "Vraag: Biedt UNASAT ook korte cursussen aan? Antwoord: Ja, naast bachelors verzorgt UNASAT ook trainingen en korte cursussen voor professionals.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_068",
+    "question": "Wat is de link naar de officile website?",
+    "answer": "De website is www.unasat.sr.",
+    "combined_text": "Vraag: Wat is de link naar de officile website? Antwoord: De website is www.unasat.sr.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_069",
+    "question": "Heeft UNASAT sociale media?",
+    "answer": "Ja, we zijn actief op Facebook en Instagram voor nieuws en updates.",
+    "combined_text": "Vraag: Heeft UNASAT sociale media? Antwoord: Ja, we zijn actief op Facebook en Instagram voor nieuws en updates.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_070",
+    "question": "Wat moet ik doen bij een adreswijziging?",
+    "answer": "Geef uw nieuwe adres zo snel mogelijk door aan Bureau Studentenzaken.",
+    "combined_text": "Vraag: Wat moet ik doen bij een adreswijziging? Antwoord: Geef uw nieuwe adres zo snel mogelijk door aan Bureau Studentenzaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_071",
+    "question": "Hoe vraag ik een studentenkaart aan?",
+    "answer": "Deze ontvangt u na volledige inschrijving en betaling van het collegegeld.",
+    "combined_text": "Vraag: Hoe vraag ik een studentenkaart aan? Antwoord: Deze ontvangt u na volledige inschrijving en betaling van het collegegeld.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_072",
+    "question": "Ik ben mijn studentenkaart kwijt, wat moet ik doen?",
+    "answer": "U kunt tegen betaling een nieuwe kaart aanvragen bij de administratie.",
+    "combined_text": "Vraag: Ik ben mijn studentenkaart kwijt, wat moet ik doen? Antwoord: U kunt tegen betaling een nieuwe kaart aanvragen bij de administratie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_073",
+    "question": "Zijn er vakanties bij UNASAT?",
+    "answer": "Ja, we volgen grotendeels de Surinaamse schoolvakanties, maar tentamenweken kunnen hiervan afwijken.",
+    "combined_text": "Vraag: Zijn er vakanties bij UNASAT? Antwoord: Ja, we volgen grotendeels de Surinaamse schoolvakanties, maar tentamenweken kunnen hiervan afwijken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_074",
+    "question": "Is er les op feestdagen?",
+    "answer": "Op officile Surinaamse feestdagen is UNASAT gesloten en zijn er geen lessen.",
+    "combined_text": "Vraag: Is er les op feestdagen? Antwoord: Op officile Surinaamse feestdagen is UNASAT gesloten en zijn er geen lessen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_075",
+    "question": "Waar vind ik de jaarplanning?",
+    "answer": "De jaarplanning staat meestal op SharePoint aan het begin van het studiejaar.",
+    "combined_text": "Vraag: Waar vind ik de jaarplanning? Antwoord: De jaarplanning staat meestal op SharePoint aan het begin van het studiejaar.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_076",
+    "question": "Hoeveel studiepunten is een vak waard?",
+    "answer": "Dit verschilt per vak en staat aangegeven in de studiegids/OER.",
+    "combined_text": "Vraag: Hoeveel studiepunten is een vak waard? Antwoord: Dit verschilt per vak en staat aangegeven in de studiegids/OER.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_077",
+    "question": "Wat is een ECTS?",
+    "answer": "ECTS staat voor European Credit Transfer System",
+    "combined_text": "Vraag: Wat is een ECTS? Antwoord: ECTS staat voor European Credit Transfer System",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_078",
+    "question": "Hoeveel studiepunten heb ik nodig voor mijn diploma?",
+    "answer": "Voor een bacheloropleiding heeft u in totaal 240 ECTS nodig.",
+    "combined_text": "Vraag: Hoeveel studiepunten heb ik nodig voor mijn diploma? Antwoord: Voor een bacheloropleiding heeft u in totaal 240 ECTS nodig.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_079",
+    "question": "Wat is een bindend studieadvies (BSA)?",
+    "answer": "Dit is een advies over of u mag doorgaan met de studie op basis van uw resultaten in het eerste jaar.",
+    "combined_text": "Vraag: Wat is een bindend studieadvies (BSA)? Antwoord: Dit is een advies over of u mag doorgaan met de studie op basis van uw resultaten in het eerste jaar.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_080",
+    "question": "Wat als ik niet genoeg punten haal?",
+    "answer": "Neem contact op met de studiebegeleider om uw opties en een eventuele vertragingsplanning te bespreken.",
+    "combined_text": "Vraag: Wat als ik niet genoeg punten haal? Antwoord: Neem contact op met de studiebegeleider om uw opties en een eventuele vertragingsplanning te bespreken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_081",
+    "question": "Wie is de directeur van UNASAT?",
+    "answer": "De directieleden staan vermeld op de website onder de sectie 'Over UNASAT'.",
+    "combined_text": "Vraag: Wie is de directeur van UNASAT? Antwoord: De directieleden staan vermeld op de website onder de sectie 'Over UNASAT'.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_082",
+    "question": "Biedt UNASAT ook masteropleidingen aan?",
+    "answer": "Op dit moment focust UNASAT zich op Bachelor en Associate Degree opleidingen.",
+    "combined_text": "Vraag: Biedt UNASAT ook masteropleidingen aan? Antwoord: Op dit moment focust UNASAT zich op Bachelor en Associate Degree opleidingen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_083",
+    "question": "Kan ik een kopie van mijn cijferlijst krijgen?",
+    "answer": "Ja, u kunt een officieel transcript aanvragen bij Bureau Studentenzaken.",
+    "combined_text": "Vraag: Kan ik een kopie van mijn cijferlijst krijgen? Antwoord: Ja, u kunt een officieel transcript aanvragen bij Bureau Studentenzaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_084",
+    "question": "Worden lessen opgenomen?",
+    "answer": "Sommige docenten nemen hun lessen op, maar dit is geen standaardregel. Vraag dit na bij uw docent.",
+    "combined_text": "Vraag: Worden lessen opgenomen? Antwoord: Sommige docenten nemen hun lessen op, maar dit is geen standaardregel. Vraag dit na bij uw docent.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_085",
+    "question": "Is er een kledingvoorschrift?",
+    "answer": "Er is geen uniform, maar we verwachten dat studenten zich correct en gepast kleden op de campus.",
+    "combined_text": "Vraag: Is er een kledingvoorschrift? Antwoord: Er is geen uniform, maar we verwachten dat studenten zich correct en gepast kleden op de campus.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_086",
+    "question": "Mag ik eten in het lokaal?",
+    "answer": "Eten in de leslokalen is niet toegestaan om de ruimtes schoon te houden.",
+    "combined_text": "Vraag: Mag ik eten in het lokaal? Antwoord: Eten in de leslokalen is niet toegestaan om de ruimtes schoon te houden.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_087",
+    "question": "Hoe meld ik een technische storing?",
+    "answer": "Storingen in lokalen of op SharePoint kunnen worden gemeld bij de ICT-afdeling.",
+    "combined_text": "Vraag: Hoe meld ik een technische storing? Antwoord: Storingen in lokalen of op SharePoint kunnen worden gemeld bij de ICT-afdeling.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_088",
+    "question": "Waar vind ik informatie over de diploma-uitreiking?",
+    "answer": "Zodra u bent geslaagd, ontvangt u van de administratie alle details over de ceremonie.",
+    "combined_text": "Vraag: Waar vind ik informatie over de diploma-uitreiking? Antwoord: Zodra u bent geslaagd, ontvangt u van de administratie alle details over de ceremonie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_089",
+    "question": "Kan ik een gesprek aanvragen met een decaan?",
+    "answer": "Ja, voor persoonlijke begeleiding kunt u een afspraak maken via Studiezaken.",
+    "combined_text": "Vraag: Kan ik een gesprek aanvragen met een decaan? Antwoord: Ja, voor persoonlijke begeleiding kunt u een afspraak maken via Studiezaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_090",
+    "question": "Wat is de missie van UNASAT?",
+    "answer": "UNASAT streeft naar het leveren van kwalitatief hoogwaardig kader voor de duurzame ontwikkeling van Suriname.",
+    "combined_text": "Vraag: Wat is de missie van UNASAT? Antwoord: UNASAT streeft naar het leveren van kwalitatief hoogwaardig kader voor de duurzame ontwikkeling van Suriname.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_091",
+    "question": "Zijn er boetes voor te laat inleveren van boeken?",
+    "answer": "Indien u boeken leent van de mediatheek, gelden er regels voor tijdig retourneren.",
+    "combined_text": "Vraag: Zijn er boetes voor te laat inleveren van boeken? Antwoord: Indien u boeken leent van de mediatheek, gelden er regels voor tijdig retourneren.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_092",
+    "question": "Mag ik roken op het terrein?",
+    "answer": "Roken is in de gebouwen verboden",
+    "combined_text": "Vraag: Mag ik roken op het terrein? Antwoord: Roken is in de gebouwen verboden",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_093",
+    "question": "Hoe blijf ik op de hoogte van roosterwijzigingen?",
+    "answer": "Kijk dagelijks op SharePoint en houd de officile mededelingen in de gaten.",
+    "combined_text": "Vraag: Hoe blijf ik op de hoogte van roosterwijzigingen? Antwoord: Kijk dagelijks op SharePoint en houd de officile mededelingen in de gaten.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_094",
+    "question": "Wat is de procedure voor uitschrijven?",
+    "answer": "U dient een officieel uitschrijfformulier in te vullen bij Bureau Studentenzaken.",
+    "combined_text": "Vraag: Wat is de procedure voor uitschrijven? Antwoord: U dient een officieel uitschrijfformulier in te vullen bij Bureau Studentenzaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_095",
+    "question": "Biedt UNASAT ondersteuning bij functiebeperkingen?",
+    "answer": "Neem contact op met de opleidingscordinator om te bespreken welke aanpassingen mogelijk zijn.",
+    "combined_text": "Vraag: Biedt UNASAT ondersteuning bij functiebeperkingen? Antwoord: Neem contact op met de opleidingscordinator om te bespreken welke aanpassingen mogelijk zijn.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_096",
+    "question": "Wie bepaalt de inhoud van de vakken?",
+    "answer": "De curriculumcommissie stelt de vakinhoud vast op basis van de behoeften in het werkveld.",
+    "combined_text": "Vraag: Wie bepaalt de inhoud van de vakken? Antwoord: De curriculumcommissie stelt de vakinhoud vast op basis van de behoeften in het werkveld.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_097",
+    "question": "Zijn de docenten werkzaam in de praktijk?",
+    "answer": "Veel docenten bij UNASAT zijn experts die ook in het bedrijfsleven of bij de overheid werken.",
+    "combined_text": "Vraag: Zijn de docenten werkzaam in de praktijk? Antwoord: Veel docenten bij UNASAT zijn experts die ook in het bedrijfsleven of bij de overheid werken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_098",
+    "question": "Hoe worden de lessen gevalueerd?",
+    "answer": "Aan het eind van elk blok wordt studenten gevraagd een evaluatieformulier in te vullen.",
+    "combined_text": "Vraag: Hoe worden de lessen gevalueerd? Antwoord: Aan het eind van elk blok wordt studenten gevraagd een evaluatieformulier in te vullen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_099",
+    "question": "Wat is de minimale groepsgrootte voor een vak?",
+    "answer": "Dit verschilt, maar meestal gaat een vak door bij minimaal 10 tot 15 studenten.",
+    "combined_text": "Vraag: Wat is de minimale groepsgrootte voor een vak? Antwoord: Dit verschilt, maar meestal gaat een vak door bij minimaal 10 tot 15 studenten.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_100",
+    "question": "Kan ik mijn eigen bedrijf gebruiken voor opdrachten?",
+    "answer": "Ja, UNASAT moedigt het toepassen van theorie op de eigen werksituatie aan.",
+    "combined_text": "Vraag: Kan ik mijn eigen bedrijf gebruiken voor opdrachten? Antwoord: Ja, UNASAT moedigt het toepassen van theorie op de eigen werksituatie aan.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_101",
+    "question": "Is er een lift in het gebouw?",
+    "answer": "Ja, de gebouwen zijn toegankelijk voor mensen die slecht ter been zijn.",
+    "combined_text": "Vraag: Is er een lift in het gebouw? Antwoord: Ja, de gebouwen zijn toegankelijk voor mensen die slecht ter been zijn.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_102",
+    "question": "Wat moet ik doen bij verlies van persoonlijke eigendommen?",
+    "answer": "U kunt informeren bij de receptie of beveiliging naar gevonden voorwerpen.",
+    "combined_text": "Vraag: Wat moet ik doen bij verlies van persoonlijke eigendommen? Antwoord: U kunt informeren bij de receptie of beveiliging naar gevonden voorwerpen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_103",
+    "question": "Hoe werkt de herkansing voor een project?",
+    "answer": "Projecten hebben vaak een specifieke herstelperiode",
+    "combined_text": "Vraag: Hoe werkt de herkansing voor een project? Antwoord: Projecten hebben vaak een specifieke herstelperiode",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_104",
+    "question": "Kan ik me na de start van het jaar nog inschrijven?",
+    "answer": "In uitzonderlijke gevallen is late instroom mogelijk, maar dit vereist toestemming van de directie.",
+    "combined_text": "Vraag: Kan ik me na de start van het jaar nog inschrijven? Antwoord: In uitzonderlijke gevallen is late instroom mogelijk, maar dit vereist toestemming van de directie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_105",
+    "question": "Zijn er internationale studenten bij UNASAT?",
+    "answer": "Ja, UNASAT staat open voor studenten uit de hele regio.",
+    "combined_text": "Vraag: Zijn er internationale studenten bij UNASAT? Antwoord: Ja, UNASAT staat open voor studenten uit de hele regio.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_106",
+    "question": "Welke programmeertalen leer ik bij Software Engineering?",
+    "answer": "Onder andere Java, Python, C# en webtechnologien zoals HTML/CSS/JavaScript.",
+    "combined_text": "Vraag: Welke programmeertalen leer ik bij Software Engineering? Antwoord: Onder andere Java, Python, C# en webtechnologien zoals HTML/CSS/JavaScript.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_107",
+    "question": "Wat voor banen kan ik krijgen na System Network Engineering?",
+    "answer": "Functies zoals Netwerkbeheerder, Systeembeheerder of Security Specialist.",
+    "combined_text": "Vraag: Wat voor banen kan ik krijgen na System Network Engineering? Antwoord: Functies zoals Netwerkbeheerder, Systeembeheerder of Security Specialist.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_108",
+    "question": "Wat voor banen kan ik krijgen na Bedrijfskunde?",
+    "answer": "Functies zoals Projectmanager, Afdelingshoofd of Organisatieadviseur.",
+    "combined_text": "Vraag: Wat voor banen kan ik krijgen na Bedrijfskunde? Antwoord: Functies zoals Projectmanager, Afdelingshoofd of Organisatieadviseur.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_109",
+    "question": "Wordt er aandacht besteed aan soft skills?",
+    "answer": "Ja, communicatie, presenteren en samenwerken zijn onderdeel van het curriculum.",
+    "combined_text": "Vraag: Wordt er aandacht besteed aan soft skills? Antwoord: Ja, communicatie, presenteren en samenwerken zijn onderdeel van het curriculum.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_110",
+    "question": "Hoe word ik een student-assistent?",
+    "answer": "Bij uitblinkende resultaten kun je door een docent gevraagd worden om te assisteren.",
+    "combined_text": "Vraag: Hoe word ik een student-assistent? Antwoord: Bij uitblinkende resultaten kun je door een docent gevraagd worden om te assisteren.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_111",
+    "question": "Wat is de klachtenprocedure?",
+    "answer": "De formele procedure voor het indienen van klachten staat beschreven in het studentenstatuut op de website.",
+    "combined_text": "Vraag: Wat is de klachtenprocedure? Antwoord: De formele procedure voor het indienen van klachten staat beschreven in het studentenstatuut op de website.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_112",
+    "question": "Hoe vaak wordt het lesmateriaal vernieuwd?",
+    "answer": "Het lesmateriaal wordt regelmatig gepdatet om aan te sluiten bij de nieuwste technologien.",
+    "combined_text": "Vraag: Hoe vaak wordt het lesmateriaal vernieuwd? Antwoord: Het lesmateriaal wordt regelmatig gepdatet om aan te sluiten bij de nieuwste technologien.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_113",
+    "question": "Kan ik een laptop lenen van school?",
+    "answer": "Er zijn laptops beschikbaar voor gebruik in de les, maar niet voor bruikleen naar huis.",
+    "combined_text": "Vraag: Kan ik een laptop lenen van school? Antwoord: Er zijn laptops beschikbaar voor gebruik in de les, maar niet voor bruikleen naar huis.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_114",
+    "question": "Waar vind ik de examenregels?",
+    "answer": "Deze staan uitgebreid beschreven in de OER op de website.",
+    "combined_text": "Vraag: Waar vind ik de examenregels? Antwoord: Deze staan uitgebreid beschreven in de OER op de website.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_115",
+    "question": "Hoe lang duurt een lesuur?",
+    "answer": "Een lesblok duurt meestal 2 tot 3 uur met een korte pauze.",
+    "combined_text": "Vraag: Hoe lang duurt een lesuur? Antwoord: Een lesblok duurt meestal 2 tot 3 uur met een korte pauze.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_116",
+    "question": "Is er een introductieweek?",
+    "answer": "Ja, aan het begin van het eerste jaar is er meestal een introductiebijeenkomst voor nieuwe studenten.",
+    "combined_text": "Vraag: Is er een introductieweek? Antwoord: Ja, aan het begin van het eerste jaar is er meestal een introductiebijeenkomst voor nieuwe studenten.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_117",
+    "question": "Wat is SharePoint?",
+    "answer": "Dit is het portaal voor al je onderwijsmateriaal en communicatie.",
+    "combined_text": "Vraag: Wat is SharePoint? Antwoord: Dit is het portaal voor al je onderwijsmateriaal en communicatie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_118",
+    "question": "Kan ik een minor volgen in het buitenland?",
+    "answer": "Dit is in ontwikkeling",
+    "combined_text": "Vraag: Kan ik een minor volgen in het buitenland? Antwoord: Dit is in ontwikkeling",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_119",
+    "question": "Zijn de tentamens digitaal of op papier?",
+    "answer": "Dit verschilt per vak",
+    "combined_text": "Vraag: Zijn de tentamens digitaal of op papier? Antwoord: Dit verschilt per vak",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_120",
+    "question": "Hoeveel kost een 21+ toets?",
+    "answer": "De kosten hiervoor worden jaarlijks vastgesteld door de administratie.",
+    "combined_text": "Vraag: Hoeveel kost een 21+ toets? Antwoord: De kosten hiervoor worden jaarlijks vastgesteld door de administratie.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_121",
+    "question": "Mag ik mijn eigen laptop gebruiken voor tentamens?",
+    "answer": "Alleen als dit expliciet is toegestaan en de juiste beveiligingssoftware is genstalleerd.",
+    "combined_text": "Vraag: Mag ik mijn eigen laptop gebruiken voor tentamens? Antwoord: Alleen als dit expliciet is toegestaan en de juiste beveiligingssoftware is genstalleerd.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_122",
+    "question": "Waar kan ik terecht met vragen over studiefinanciering?",
+    "answer": "Hiervoor kun je terecht bij de relevante overheidsinstanties (zoals NOB).",
+    "combined_text": "Vraag: Waar kan ik terecht met vragen over studiefinanciering? Antwoord: Hiervoor kun je terecht bij de relevante overheidsinstanties (zoals NOB).",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_123",
+    "question": "Biedt UNASAT hulp bij het schrijven van een CV?",
+    "answer": "Ja, dit komt vaak aan bod tijdens de loopbaanbegeleiding of stagevoorbereiding.",
+    "combined_text": "Vraag: Biedt UNASAT hulp bij het schrijven van een CV? Antwoord: Ja, dit komt vaak aan bod tijdens de loopbaanbegeleiding of stagevoorbereiding.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_124",
+    "question": "Is er een alumni-netwerk?",
+    "answer": "Ja, UNASAT probeert contact te houden met afgestudeerden voor netwerkevents.",
+    "combined_text": "Vraag: Is er een alumni-netwerk? Antwoord: Ja, UNASAT probeert contact te houden met afgestudeerden voor netwerkevents.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_125",
+    "question": "Wat is het slagingspercentage?",
+    "answer": "Dit verschilt per jaar en per richting, maar de begeleiding is erop gericht dit zo hoog mogelijk te houden.",
+    "combined_text": "Vraag: Wat is het slagingspercentage? Antwoord: Dit verschilt per jaar en per richting, maar de begeleiding is erop gericht dit zo hoog mogelijk te houden.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_126",
+    "question": "Hoeveel studenten heeft UNASAT?",
+    "answer": "UNASAT heeft honderden studenten verspreid over de verschillende locaties en richtingen.",
+    "combined_text": "Vraag: Hoeveel studenten heeft UNASAT? Antwoord: UNASAT heeft honderden studenten verspreid over de verschillende locaties en richtingen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_127",
+    "question": "Is er een vertrouwenspersoon?",
+    "answer": "Ja, er is een vertrouwenspersoon waarbij je terecht kunt met gevoelige zaken.",
+    "combined_text": "Vraag: Is er een vertrouwenspersoon? Antwoord: Ja, er is een vertrouwenspersoon waarbij je terecht kunt met gevoelige zaken.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_128",
+    "question": "Zijn er extra kosten voor practica?",
+    "answer": "Soms kunnen er kleine bijdragen gevraagd worden voor specifiek verbruiksmateriaal.",
+    "combined_text": "Vraag: Zijn er extra kosten voor practica? Antwoord: Soms kunnen er kleine bijdragen gevraagd worden voor specifiek verbruiksmateriaal.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_129",
+    "question": "Hoe is de bereikbaarheid met het openbaar vervoer?",
+    "answer": "De campus in Paramaribo is goed bereikbaar met de buslijnen die naar de universiteit rijden.",
+    "combined_text": "Vraag: Hoe is de bereikbaarheid met het openbaar vervoer? Antwoord: De campus in Paramaribo is goed bereikbaar met de buslijnen die naar de universiteit rijden.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_130",
+    "question": "Wat zijn de eisen voor een afstudeerverslag?",
+    "answer": "De specifieke richtlijnen staan in de afstudeerhandleiding op SharePoint.",
+    "combined_text": "Vraag: Wat zijn de eisen voor een afstudeerverslag? Antwoord: De specifieke richtlijnen staan in de afstudeerhandleiding op SharePoint.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_131",
+    "question": "Hoe word ik op de hoogte gehouden van noodgevallen?",
+    "answer": "Dit gebeurt via de website, sociale media en directe mailings naar studenten.",
+    "combined_text": "Vraag: Hoe word ik op de hoogte gehouden van noodgevallen? Antwoord: Dit gebeurt via de website, sociale media en directe mailings naar studenten.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_132",
+    "question": "Kan ik me voor n los vak inschrijven?",
+    "answer": "Ja, UNASAT biedt soms de mogelijkheid om vakken als contractstudent te volgen.",
+    "combined_text": "Vraag: Kan ik me voor n los vak inschrijven? Antwoord: Ja, UNASAT biedt soms de mogelijkheid om vakken als contractstudent te volgen.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_133",
+    "question": "Wat is het verschil tussen een Bachelor en een AD?",
+    "answer": "Een Associate Degree (AD) duurt 2 jaar, een Bachelor duurt 4 jaar.",
+    "combined_text": "Vraag: Wat is het verschil tussen een Bachelor en een AD? Antwoord: Een Associate Degree (AD) duurt 2 jaar, een Bachelor duurt 4 jaar.",
+    "metadata": {}
+  },
+  {
+    "id": "unasat_134",
+    "question": "Kan ik na een AD doorstromen naar een Bachelor?",
+    "answer": "Ja, je kunt vaak met vrijstellingen doorstromen om je volledige bachelorgraad te halen.",
+    "combined_text": "Vraag: Kan ik na een AD doorstromen naar een Bachelor? Antwoord: Ja, je kunt vaak met vrijstellingen doorstromen om je volledige bachelorgraad te halen.",
+    "metadata": {}
+  }
+]
