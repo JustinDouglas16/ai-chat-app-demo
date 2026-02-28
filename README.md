@@ -103,6 +103,24 @@ npm start
 This builds the React frontend into `dist/` and starts the Express
 server which serves both the API and the static files.
 
+## RAG Knowledge Base
+
+The server now supports lightweight JSON-based RAG routing. If a user question matches an entry in `server/data/unasat_rag.json`, the app injects that matched Q/A as context and asks the model to produce a polished final answer. If no match is found, chat behaves normally.
+
+You can extend the file with records in this shape:
+
+```json
+[
+  {
+    "id": "unasat_001",
+    "question": "Hoe weet ik in welk lokaal ik moet zijn?",
+    "answer": "Het lokaal wordt vermeld op het informatiebord bij de grote ingang en in uw rooster op SharePoint.",
+    "combined_text": "Vraag: ... Antwoord: ...",
+    "metadata": {}
+  }
+]
+```
+
 ## Project Structure
 
 ```text
