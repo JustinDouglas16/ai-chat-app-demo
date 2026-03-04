@@ -43,7 +43,8 @@ A chat interface powered by Hugging Face's API router, built with React, TypeScr
 | UI       | shadcn/ui + Tailwind CSS v4         |
 | Markdown | react-markdown + remark-gfm         |
 | Backend  | Express 5                           |
-| AI       | OpenAI SDK → Hugging Face Router    |
+<!-- | AI       | OpenAI SDK → Hugging Face Router    | -->
+| AI       | Hugging Face InferenceClient + Router    |
 | Icons    | Lucide React                        |
 
 ## Prerequisites

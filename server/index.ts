@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import { OpenAI } from "openai";
+// import { OpenAI } from "openai";
 import path from "path";
 import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
@@ -9,6 +9,7 @@ import { eq, desc, asc } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { db } from "./db/index.js";
 import { conversations, messages } from "./db/schema.js";
+import { InferenceClient } from "@huggingface/inference";
 
 interface RagEntry {
   id: string;
@@ -23,6 +24,12 @@ interface IndexedRagEntry extends RagEntry {
   tokens: string[];
 }
 
+interface HardcodedFact {
+  id: string;
+  triggers: string[];
+  answer: string;
+}
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = 3001;
@@ -30,10 +37,12 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-const client = new OpenAI({
-  baseURL: "https://router.huggingface.co/v1",
-  apiKey: process.env.HF_TOKEN,
-});
+// const client = new OpenAI({
+//   baseURL: "https://router.huggingface.co/v1",
+//   apiKey: process.env.HF_TOKEN,
+// });
+
+const client = new InferenceClient(process.env.HF_TOKEN);
 
 const normalizeText = (text: string) =>
   text
@@ -48,6 +57,67 @@ const tokenize = (text: string) =>
   normalizeText(text)
     .split(" ")
     .filter((token) => token.length > 2);
+
+const schoolDomainKeywords = new Set([
+  "unasat",
+  "school",
+  "campus",
+  "locatie",
+  "adres",
+  "lokaal",
+  "les",
+  "rooster",
+  "docent",
+  "inschrijven",
+  "opleiding",
+  "student",
+  "sharepoint",
+]);
+
+const hardcodedFacts: HardcodedFact[] = [
+  {
+    id: "unasat-location-verification",
+    triggers: [
+      "waar is unasat",
+      "waar bevindt unasat zich",
+      "wat is het adres van unasat",
+      "unasat adres",
+      "locatie unasat",
+    ],
+    answer:
+      "Ik kan je locatievraag alleen beantwoorden op basis van geverifieerde UNASAT-bronnen. In mijn huidige kennisset staat nog geen officieel, bevestigd adresrecord. Raadpleeg daarom de officiële UNASAT-website of administratie voor het juiste adres.",
+  },
+  {
+    id: "unasat-classroom",
+    triggers: ["in welk lokaal", "welk lokaal", "waar is mijn lokaal"],
+    answer:
+      "Volgens de UNASAT-kennisset staat het lokaal op het informatiebord bij de grote ingang en in je rooster op SharePoint.",
+  },
+];
+
+function isSchoolDomainQuestion(question: string): boolean {
+  const normalizedQuestion = normalizeText(question);
+
+  return Array.from(schoolDomainKeywords).some((keyword) =>
+    normalizedQuestion.includes(keyword),
+  );
+}
+
+function findHardcodedFactMatch(question: string): HardcodedFact | null {
+  const normalizedQuestion = normalizeText(question);
+
+  for (const fact of hardcodedFacts) {
+    const found = fact.triggers.some((trigger) =>
+      normalizedQuestion.includes(normalizeText(trigger)),
+    );
+
+    if (found) {
+      return fact;
+    }
+  }
+
+  return null;
+}
 
 function loadRagEntries(): IndexedRagEntry[] {
   const ragPath = path.join(__dirname, "data", "unasat_rag.json");
@@ -222,18 +292,56 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const ragMatch = findBestRagMatch(userMsg.content);
+    const hardcodedFactMatch = findHardcodedFactMatch(userMsg.content);
+    const isSchoolQuestion = isSchoolDomainQuestion(userMsg.content);
+
+    const persistAssistantAndClose = async (assistantContent: string) => {
+      await db.insert(messages).values({
+        id: uuidv4(),
+        conversationId,
+        role: "assistant",
+        content: assistantContent,
+      });
+
+      await db
+        .update(conversations)
+        .set({ updatedAt: new Date() })
+        .where(eq(conversations.id, conversationId));
+
+      res.write("data: [DONE]\n\n");
+      res.end();
+    };
+
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+
+    if (hardcodedFactMatch) {
+      const safeAnswer = hardcodedFactMatch.answer;
+      res.write(`data: ${JSON.stringify({ content: safeAnswer })}\n\n`);
+      await persistAssistantAndClose(safeAnswer);
+      return;
+    }
+
+    if (isSchoolQuestion && !ragMatch) {
+      const safeFallback =
+        "Ik wil je geen foutieve schoolinformatie geven. Ik heb hiervoor geen geverifieerde UNASAT-bron in mijn kennisset. Controleer dit via de officiële UNASAT-kanalen of de administratie.";
+      res.write(`data: ${JSON.stringify({ content: safeFallback })}\n\n`);
+      await persistAssistantAndClose(safeFallback);
+      return;
+    }
 
     const upstreamMessages = ragMatch
       ? [
           {
             role: "system" as const,
             content:
-              "Je bent een behulpzame UNASAT-assistent. Gebruik de meegeleverde kennis als primaire bron als die relevant is. Geef een direct, kort en helder antwoord in dezelfde taal als de gebruiker. Als de kennis niet volledig is, wees daar eerlijk over.",
+              "Je bent een behulpzame UNASAT-assistent. Gebruik uitsluitend de meegeleverde kennis als primaire bron. Als de kennis niet voldoende is, zeg dat expliciet en verwijs naar officiële UNASAT-kanalen.",
           },
           ...chatMessages.slice(0, -1),
           {
             role: "user" as const,
-            content: `${userMsg.content}\n\nGebruik deze kennis als context:\nVraag: ${ragMatch.question}\nAntwoord: ${ragMatch.answer}\n\nFormuleer een duidelijk, behulpzaam antwoord voor de gebruiker op basis van deze context.`,
+            content: `${userMsg.content}\n\nGebruik deze kennis als context:\nVraag: ${ragMatch.question}\nAntwoord: ${ragMatch.answer}\n\nGeef een duidelijk, kort antwoord in dezelfde taal als de gebruiker en blijf binnen deze kennis.`,
           },
         ]
       : chatMessages;
@@ -243,10 +351,16 @@ app.post("/api/chat", async (req, res) => {
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
-    const stream = await client.chat.completions.create({
-      model: "moonshotai/Kimi-K2-Instruct-0905:fastest",
+    // const stream = await client.chat.completions.create({
+    //   model: "moonshotai/Kimi-K2-Instruct-0905:fastest",
+    //   messages: upstreamMessages,
+    //   stream: true,
+    // });
+
+    const stream = client.chatCompletionStream({
+      model: "openai/gpt-oss-120b:groq",
       messages: upstreamMessages,
-      stream: true,
+      // stream: true,
     });
 
     let assistantContent = "";
@@ -259,22 +373,24 @@ app.post("/api/chat", async (req, res) => {
       }
     }
 
+    await persistAssistantAndClose(assistantContent);
+
     // Save assistant message
-    await db.insert(messages).values({
-      id: uuidv4(),
-      conversationId,
-      role: "assistant",
-      content: assistantContent,
-    });
+    // await db.insert(messages).values({
+    //   id: uuidv4(),
+    //   conversationId,
+    //   role: "assistant",
+    //   content: assistantContent,
+    // });
 
     // Update conversation timestamp
-    await db
-      .update(conversations)
-      .set({ updatedAt: new Date() })
-      .where(eq(conversations.id, conversationId));
+    // await db
+    //   .update(conversations)
+    //   .set({ updatedAt: new Date() })
+    //   .where(eq(conversations.id, conversationId));
 
-    res.write("data: [DONE]\n\n");
-    res.end();
+    // res.write("data: [DONE]\n\n");
+    // res.end();
   } catch (error) {
     console.error(error);
     if (!res.headersSent) {
