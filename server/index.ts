@@ -76,22 +76,51 @@ const schoolDomainKeywords = new Set([
 
 const hardcodedFacts: HardcodedFact[] = [
   {
-    id: "unasat-location-verification",
+    id: "unasat-location-paramaribo",
     triggers: [
-      "waar is unasat",
-      "waar bevindt unasat zich",
-      "wat is het adres van unasat",
-      "unasat adres",
-      "locatie unasat",
+      "waar is unasat paramaribo",
+      "adres unasat paramaribo",
+      "locatie unasat paramaribo",
+      "waar bevindt unasat paramaribo zich",
+      "unasat paramaribo adres",
     ],
     answer:
-      "Ik kan je locatievraag alleen beantwoorden op basis van geverifieerde UNASAT-bronnen. In mijn huidige kennisset staat nog geen officieel, bevestigd adresrecord. Raadpleeg daarom de officiële UNASAT-website of administratie voor het juiste adres.",
+      "UNASAT Paramaribo bevindt zich aan Hindilaan 1B in Paramaribo. Je kunt contact opnemen via info@unasat.sr of bellen naar 430-490 / 438-718. WhatsApp berichten kunnen naar 888-2543.",
   },
   {
-    id: "unasat-classroom",
-    triggers: ["in welk lokaal", "welk lokaal", "waar is mijn lokaal"],
+    id: "unasat-location-nickerie",
+    triggers: [
+      "waar is unasat nickerie",
+      "adres unasat nickerie",
+      "locatie unasat nickerie",
+      "waar bevindt unasat nickerie zich",
+      "unasat nickerie adres",
+    ],
     answer:
-      "Volgens de UNASAT-kennisset staat het lokaal op het informatiebord bij de grote ingang en in je rooster op SharePoint.",
+      "UNASAT Nickerie bevindt zich aan Walther Hewittstraat 1, Wingroep, Nieuw Nickerie. Je kunt contact opnemen via someopleidingscoordinator@unasat.sr of bellen naar 430-490 / 438-718. WhatsApp berichten kunnen naar 888-2543.",
+  },
+  {
+    id: "unasat-contact",
+    triggers: [
+      "contact unasat",
+      "telefoon unasat",
+      "email unasat",
+      "hoe kan ik unasat bereiken",
+      "unasat telefoonnummer",
+    ],
+    answer:
+      "Je kunt UNASAT bereiken via e-mail op info@unasat.sr of telefonisch via 430-490 / 438-718. Voor WhatsApp berichten kun je sturen naar 888-2543.",
+  },
+  {
+    id: "unasat-whatsapp",
+    triggers: [
+      "unasat whatsapp",
+      "kan ik unasat appen",
+      "whatsapp nummer unasat",
+      "unasat mobiel nummer",
+    ],
+    answer:
+      "Je kunt UNASAT een WhatsApp bericht sturen naar 888-2543. Dit nummer is alleen bedoeld voor WhatsApp berichten.",
   },
 ];
 
