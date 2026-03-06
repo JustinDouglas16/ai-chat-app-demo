@@ -5,7 +5,8 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useChat } from "@/hooks/useChat";
-import { Loader2, BotMessageSquare, Square } from "lucide-react";
+import { Loader2, Square } from "lucide-react";
+import unasatLogo from "@/assets/unasat-logo.png";
 
 interface ChatContainerProps {
   conversationId: string | null;
@@ -54,8 +55,12 @@ export function ChatContainer({
       {/* Header */}
       <header className="flex items-center justify-between border-b border-border/50 bg-card/50 px-6 py-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-glow/20">
-            <BotMessageSquare className="h-5 w-5 text-blue-bright" />
+          <div className="flex h-9 items-center rounded-lg bg-white px-2">
+            <img
+              src={unasatLogo}
+              alt="UNASAT"
+              className="h-6 w-auto object-contain"
+            />
           </div>
           <div>
             <h1 className="text-lg font-semibold text-foreground">
@@ -74,9 +79,19 @@ export function ChatContainer({
         <div className="mx-auto flex max-w-3xl flex-col gap-5 py-6">
           {!conversationId && (
             <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-glow/10 ring-1 ring-blue-glow/20">
-                <BotMessageSquare className="h-8 w-8 text-blue-glow" />
-              </div>
+              <img
+                src={unasatLogo}
+                alt="UNASAT"
+                className="h-10 w-auto object-contain"
+              />
+
+              {/* <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white ring-1 ring-blue-glow/20">
+                <img
+                  src={unasatLogo}
+                  alt="UNASAT"
+                  className="h-10 w-auto object-contain"
+                />
+              </div> */}
               <div>
                 <p className="text-lg font-medium text-foreground">
                   Select or start a conversation
@@ -90,8 +105,12 @@ export function ChatContainer({
 
           {conversationId && messages.length === 0 && !isLoading && (
             <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-glow/10 ring-1 ring-blue-glow/20">
-                <BotMessageSquare className="h-8 w-8 text-blue-glow" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white ring-1 ring-blue-glow/20">
+                <img
+                  src={unasatLogo}
+                  alt="UNASAT"
+                  className="h-10 w-auto object-contain"
+                />
               </div>
               <div>
                 <p className="text-lg font-medium text-foreground">
@@ -136,10 +155,7 @@ export function ChatContainer({
 
       {/* Input */}
       <div className="mx-auto w-full max-w-3xl">
-        <ChatInput
-          onSend={handleSend}
-          disabled={isLoading}
-        />
+        <ChatInput onSend={handleSend} disabled={isLoading} />
       </div>
     </div>
   );
