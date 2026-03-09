@@ -16,6 +16,8 @@ interface ChatSidebarProps {
   onSelect: (id: string) => void;
   onCreate: () => void;
   onDelete: (id: string) => void;
+  className?: string;
+  onAction?: () => void;
 }
 
 export function ChatSidebar({
@@ -24,13 +26,23 @@ export function ChatSidebar({
   onSelect,
   onCreate,
   onDelete,
+  className,
+  onAction,
 }: ChatSidebarProps) {
   return (
-    <div className="flex h-full w-64 shrink-0 flex-col border-r border-border/50 bg-card/50">
+    <div
+      className={cn(
+        "flex h-full w-64 shrink-0 flex-col border-r border-border/50 bg-card/50",
+        className,
+      )}
+    >
       {/* New chat button */}
       <div className="p-3">
         <Button
-          onClick={onCreate}
+          onClick={() => {
+            onCreate();
+            onAction?.();
+          }}
           className="w-full gap-2 bg-blue-glow text-white hover:bg-blue-bright"
         >
           <Plus className="h-4 w-4" />
@@ -58,7 +70,10 @@ export function ChatSidebar({
                   ? "bg-blue-glow/15 text-foreground"
                   : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
               )}
-              onClick={() => onSelect(conv.id)}
+              onClick={() => {
+                onSelect(conv.id);
+                onAction?.();
+              }}
             >
               <MessageSquare className="h-4 w-4 shrink-0" />
               <span className="flex-1 truncate">{conv.title}</span>

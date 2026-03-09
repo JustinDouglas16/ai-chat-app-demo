@@ -5,18 +5,20 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useChat } from "@/hooks/useChat";
-import { Loader2, Square } from "lucide-react";
+import { Loader2, Square, Menu } from "lucide-react";
 import unasatLogo from "@/assets/unasat-logo.png";
 
 interface ChatContainerProps {
   conversationId: string | null;
   // onFirstMessage?: () => void;
   onFirstMessage?: () => Promise<string | null>;
+  onOpenSidebar?: () => void;
 }
 
 export function ChatContainer({
   conversationId,
   onFirstMessage,
+  onOpenSidebar,
 }: ChatContainerProps) {
   const { messages, isLoading, sendMessage, stopGenerating, loadMessages } =
     useChat(conversationId);
@@ -53,8 +55,17 @@ export function ChatContainer({
   return (
     <div className="flex min-h-0 flex-1 flex-col bg-background">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-border/50 bg-card/50 px-6 py-4 backdrop-blur-sm">
+      <header className="flex items-center justify-between border-b border-border/50 bg-card/50 px-4 py-4 backdrop-blur-sm sm:px-6">
         <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onOpenSidebar}
+            className="md:hidden"
+            aria-label="Open conversations"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
           <div className="flex h-9 items-center rounded-lg bg-white px-2">
             <img
               src={unasatLogo}
@@ -63,7 +74,7 @@ export function ChatContainer({
             />
           </div>
           <div>
-            <h1 className="text-lg font-semibold text-foreground">
+            <h1 className="text-base font-semibold text-foreground sm:text-lg">
               Unasat Chat
             </h1>
             {/* <p className="text-xs text-muted-foreground">

@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ChatContainer } from "@/components/chat/ChatContainer";
 import { ChatSidebar } from "@/components/chat/ChatSidebar";
 import { useConversations } from "@/hooks/useConversations";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 function App() {
   const {
@@ -12,6 +13,7 @@ function App() {
     createConversation,
     deleteConversation,
   } = useConversations();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetchConversations();
@@ -22,7 +24,7 @@ function App() {
   };
 
   const handleCreate = async () => {
-    const newConversationId =  await createConversation();
+    const newConversationId = await createConversation();
     // Refresh list to get updated data
     await fetchConversations();
     return newConversationId;
@@ -35,15 +37,34 @@ function App() {
   return (
     <div className="flex h-screen overflow-hidden">
       <ChatSidebar
+        className="hidden md:flex"
         conversations={conversations}
         activeId={activeId}
         onSelect={handleSelect}
         onCreate={handleCreate}
         onDelete={handleDelete}
       />
+      <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+        <SheetContent
+          side="left"
+          className="w-[85vw] p-0 sm:max-w-xs"
+          showCloseButton={false}
+        >
+          <ChatSidebar
+            className="w-full border-r-0"
+            conversations={conversations}
+            activeId={activeId}
+            onSelect={handleSelect}
+            onCreate={handleCreate}
+            onDelete={handleDelete}
+            onAction={() => setIsSidebarOpen(false)}
+          />
+        </SheetContent>
+      </Sheet>
       <ChatContainer
         conversationId={activeId}
         onFirstMessage={handleCreate}
+        onOpenSidebar={() => setIsSidebarOpen(true)}
       />
     </div>
   );
