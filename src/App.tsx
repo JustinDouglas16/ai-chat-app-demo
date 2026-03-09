@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ChatContainer } from "@/components/chat/ChatContainer";
 import { ChatSidebar } from "@/components/chat/ChatSidebar";
 import { useConversations } from "@/hooks/useConversations";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetHeader, SheetTitle, SheetContent } from "@/components/ui/sheet";
 
 function App() {
   const {
@@ -50,6 +50,10 @@ function App() {
           className="w-[85vw] p-0 sm:max-w-xs"
           showCloseButton={false}
         >
+          <SheetHeader className="sr-only">
+            <SheetTitle>Sidebar</SheetTitle>
+          </SheetHeader>
+
           <ChatSidebar
             className="w-full border-r-0"
             conversations={conversations}
