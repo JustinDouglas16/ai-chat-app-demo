@@ -58,7 +58,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
       <div
         className={cn(
-          "group relative max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
+          "group relative max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[75%]",
           isUser
             ? "bg-[rgba(211,85,0,1)] text-white"
             : "bg-[rgba(0,29,109,1)] text-white",
@@ -82,8 +82,17 @@ export function ChatMessage({ message }: ChatMessageProps) {
         {isUser ? (
           <p className="whitespace-pre-wrap">{message.content}</p>
         ) : (
-          <div className="prose prose-sm prose-invert max-w-none pr-8 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-black/30 [&_pre]:p-3 [&_code]:rounded [&_code]:bg-black/20 [&_code]:px-1.5 [&_code]:py-0.5 [&_table]:w-full [&_th]:border [&_th]:border-white/20 [&_th]:px-3 [&_th]:py-1 [&_td]:border [&_td]:border-white/20 [&_td]:px-3 [&_td]:py-1">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <div className="prose prose-sm prose-invert max-w-none pr-8 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-black/30 [&_pre]:p-3 [&_code]:rounded [&_code]:bg-black/20 [&_code]:px-1.5 [&_code]:py-0.5 [&_th]:border [&_th]:border-white/20 [&_th]:px-3 [&_th]:py-1 [&_td]:border [&_td]:border-white/20 [&_td]:px-3 [&_td]:py-1">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                table: ({ children }) => (
+                  <div className="my-2 w-full overflow-x-auto">
+                    <table className="w-full min-w-lg">{children}</table>
+                  </div>
+                ),
+              }}
+            >
               {message.content}
             </ReactMarkdown>
           </div>
