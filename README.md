@@ -39,7 +39,7 @@ A chat interface powered by Hugging Face's API router, built with React, TypeScr
 
 ```bash
 git clone https://github.com/JustinDouglas16/ai-chat-app-demo.git
-cd react-chat-app
+cd ai-chat-app-demo
 ```
 
 ### 2. Install dependencies
