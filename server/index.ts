@@ -85,6 +85,13 @@ const SCHOOL_ONLY_REFUSAL_MESSAGE =
 const SCHOOL_ONLY_SYSTEM_PROMPT =
   "Je bent een UNASAT-assistent. Beantwoord uitsluitend vragen die over UNASAT of schoolzaken gaan. Als een vraag niet over UNASAT/school gaat, weiger dan kort en verwijs de gebruiker om een UNASAT-gerelateerde vraag te stellen. Verzin geen feiten. Als informatie ontbreekt, zeg dat duidelijk en verwijs naar officiële UNASAT-kanalen.";
 
+const MAX_QUESTIONS_PER_CONVERSATION = Number(
+  process.env.MAX_QUESTIONS_PER_CONVERSATION ?? "3",
+);
+
+const RATE_LIMIT_REACHED_MESSAGE =
+  "Je hebt het maximum aantal vragen voor deze chatsessie bereikt. Start een nieuw gesprek om verder te gaan.";
+
 const hardcodedFacts: HardcodedFact[] = [
   {
     id: "unasat-location-paramaribo",
@@ -307,33 +314,42 @@ app.post("/api/chat", async (req, res) => {
 
     // Save user message
     const userMsg = chatMessages[chatMessages.length - 1];
-    await db.insert(messages).values({
-      id: uuidv4(),
-      conversationId,
-      role: userMsg.role,
-      content: userMsg.content,
-    });
+    // await db.insert(messages).values({
+    //   id: uuidv4(),
+    //   conversationId,
+    //   role: userMsg.role,
+    //   content: userMsg.content,
+    // });
 
     // Update conversation title from first user message
-    const msgCount = await db
+    // const msgCount = await db
+    const conversationMessages = await db
       .select()
       .from(messages)
       .where(eq(messages.conversationId, conversationId));
 
-    if (msgCount.length === 1) {
-      const title =
-        userMsg.content.length > 50
-          ? userMsg.content.slice(0, 50) + "..."
-          : userMsg.content;
-      await db
-        .update(conversations)
-        .set({ title, updatedAt: new Date() })
-        .where(eq(conversations.id, conversationId));
-    }
+    const userQuestionCount = conversationMessages.filter(
+      (message) => message.role === "user",
+    ).length;
 
-    const ragMatch = findBestRagMatch(userMsg.content);
-    const hardcodedFactMatch = findHardcodedFactMatch(userMsg.content);
-    const isSchoolQuestion = isSchoolDomainQuestion(userMsg.content);
+    // if (msgCount.length === 1) {
+    //   const title =
+    //     userMsg.content.length > 50
+    //       ? userMsg.content.slice(0, 50) + "..."
+    //       : userMsg.content;
+    //   await db
+    //     .update(conversations)
+    //     .set({ title, updatedAt: new Date() })
+    //     .where(eq(conversations.id, conversationId));
+    // }
+
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+
+    // const ragMatch = findBestRagMatch(userMsg.content);
+    // const hardcodedFactMatch = findHardcodedFactMatch(userMsg.content);
+    // const isSchoolQuestion = isSchoolDomainQuestion(userMsg.content);
 
     const persistAssistantAndClose = async (assistantContent: string) => {
       await db.insert(messages).values({
@@ -352,30 +368,132 @@ app.post("/api/chat", async (req, res) => {
       res.end();
     };
 
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
+    // res.setHeader("Content-Type", "text/event-stream");
+    // res.setHeader("Cache-Control", "no-cache");
+    // res.setHeader("Connection", "keep-alive");
 
-    if (hardcodedFactMatch) {
-      const safeAnswer = hardcodedFactMatch.answer;
-      res.write(`data: ${JSON.stringify({ content: safeAnswer })}\n\n`);
-      await persistAssistantAndClose(safeAnswer);
+    const streamLiteralResponse = async (content: string) => {
+      res.write(`data: ${JSON.stringify({ content })}\n\n`);
+      await persistAssistantAndClose(content);
+    };
+
+    // if (hardcodedFactMatch) {
+    //   const safeAnswer = hardcodedFactMatch.answer;
+    //   res.write(`data: ${JSON.stringify({ content: safeAnswer })}\n\n`);
+    //   await persistAssistantAndClose(safeAnswer);
+    //   return;
+    // }
+
+    const streamModelResponse = async (
+      upstreamMessages: Array<{
+        role: "system" | "user" | "assistant";
+        content: string;
+      }>,
+      fallbackResponse?: string,
+    ) => {
+      try {
+        const stream = client.chatCompletionStream({
+          model: "openai/gpt-oss-120b:groq",
+          messages: upstreamMessages,
+        });
+
+        let assistantContent = "";
+
+        for await (const chunk of stream) {
+          const content = chunk.choices[0]?.delta?.content || "";
+
+          if (content) {
+            assistantContent += content;
+            res.write(`data: ${JSON.stringify({ content })}\n\n`);
+          }
+        }
+
+        if (!assistantContent.trim() && fallbackResponse) {
+          await streamLiteralResponse(fallbackResponse);
+          return;
+        }
+
+        await persistAssistantAndClose(assistantContent);
+      } catch (streamError) {
+        console.error(
+          "Model stream failed, using fallback response",
+          streamError,
+        );
+
+        if (fallbackResponse) {
+          await streamLiteralResponse(fallbackResponse);
+          return;
+        }
+
+        throw streamError;
+      }
+    };
+
+    if (userQuestionCount >= MAX_QUESTIONS_PER_CONVERSATION) {
+      await streamLiteralResponse(RATE_LIMIT_REACHED_MESSAGE);
       return;
     }
 
+    // Save user message
+    await db.insert(messages).values({
+      id: uuidv4(),
+      conversationId,
+      role: userMsg.role,
+      content: userMsg.content,
+    });
+
+    // Update conversation title from first user message
+    if (conversationMessages.length === 0) {
+      const title =
+        userMsg.content.length > 50
+          ? userMsg.content.slice(0, 50) + "..."
+          : userMsg.content;
+      await db
+        .update(conversations)
+        .set({ title, updatedAt: new Date() })
+        .where(eq(conversations.id, conversationId));
+    }
+
+    const ragMatch = findBestRagMatch(userMsg.content);
+    const hardcodedFactMatch = findHardcodedFactMatch(userMsg.content);
+    const isSchoolQuestion = isSchoolDomainQuestion(userMsg.content);
+
+    // if (!isSchoolQuestion && !ragMatch) {
+    //   res.write(
+    //     `data: ${JSON.stringify({ content: SCHOOL_ONLY_REFUSAL_MESSAGE })}\n\n`,
+    //   );
+    //   await persistAssistantAndClose(SCHOOL_ONLY_REFUSAL_MESSAGE);
+    //   return;
+    // }
+
     if (!isSchoolQuestion && !ragMatch) {
-      res.write(
-        `data: ${JSON.stringify({ content: SCHOOL_ONLY_REFUSAL_MESSAGE })}\n\n`,
+      await streamLiteralResponse(SCHOOL_ONLY_REFUSAL_MESSAGE);
+      return;
+    }
+
+    if (hardcodedFactMatch) {
+      await streamModelResponse(
+        [
+          {
+            role: "system",
+            content: `${SCHOOL_ONLY_SYSTEM_PROMPT} Herschrijf het antwoord duidelijker en natuurlijker, maar behoud alle feiten exact. Voeg geen nieuwe details toe.`,
+          },
+          {
+            role: "user",
+            content: `Vraag van gebruiker: ${userMsg.content}\n\nBronantwoord (feitelijk): ${hardcodedFactMatch.answer}\n\nGeef een beter geformuleerd antwoord in dezelfde taal als de gebruiker.`,
+          },
+        ],
+        hardcodedFactMatch.answer,
       );
-      await persistAssistantAndClose(SCHOOL_ONLY_REFUSAL_MESSAGE);
       return;
     }
 
     if (isSchoolQuestion && !ragMatch) {
       const safeFallback =
         "Ik wil je geen foutieve schoolinformatie geven. Ik heb hiervoor geen geverifieerde UNASAT-bron in mijn kennisset. Controleer dit via de officiële UNASAT-kanalen of de administratie.";
-      res.write(`data: ${JSON.stringify({ content: safeFallback })}\n\n`);
-      await persistAssistantAndClose(safeFallback);
+      // res.write(`data: ${JSON.stringify({ content: safeFallback })}\n\n`);
+      // await persistAssistantAndClose(safeFallback);
+      await streamLiteralResponse(safeFallback);
       return;
     }
 
@@ -403,11 +521,12 @@ app.post("/api/chat", async (req, res) => {
           },
           ...chatMessages,
         ];
+    await streamModelResponse(upstreamMessages);
 
     // Set SSE headers
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
+    // res.setHeader("Content-Type", "text/event-stream");
+    // res.setHeader("Cache-Control", "no-cache");
+    // res.setHeader("Connection", "keep-alive");
 
     // const stream = await client.chat.completions.create({
     //   model: "moonshotai/Kimi-K2-Instruct-0905:fastest",
@@ -415,23 +534,23 @@ app.post("/api/chat", async (req, res) => {
     //   stream: true,
     // });
 
-    const stream = client.chatCompletionStream({
-      model: "openai/gpt-oss-120b:groq",
-      messages: upstreamMessages,
-      // stream: true,
-    });
+    // const stream = client.chatCompletionStream({
+    //   model: "openai/gpt-oss-120b:groq",
+    //   messages: upstreamMessages,
+    //   // stream: true,
+    // });
 
-    let assistantContent = "";
+    // let assistantContent = "";
 
-    for await (const chunk of stream) {
-      const content = chunk.choices[0]?.delta?.content || "";
-      if (content) {
-        assistantContent += content;
-        res.write(`data: ${JSON.stringify({ content })}\n\n`);
-      }
-    }
+    // for await (const chunk of stream) {
+    //   const content = chunk.choices[0]?.delta?.content || "";
+    //   if (content) {
+    //     assistantContent += content;
+    //     res.write(`data: ${JSON.stringify({ content })}\n\n`);
+    //   }
+    // }
 
-    await persistAssistantAndClose(assistantContent);
+    // await persistAssistantAndClose(assistantContent);
 
     // Save assistant message
     // await db.insert(messages).values({
