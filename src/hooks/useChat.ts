@@ -22,8 +22,6 @@ export function useChat(conversationId: string | null) {
   }, []);
 
   const sendMessage = useCallback(
-    // async (content: string) => {
-    //   if (!conversationId) return;
     async (content: string, targetConversationId?: string | null) => {
       const activeConversationId = targetConversationId ?? conversationId;
 

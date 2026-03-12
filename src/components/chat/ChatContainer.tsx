@@ -10,7 +10,6 @@ import unasatLogo from "@/assets/unasat-logo.png";
 
 interface ChatContainerProps {
   conversationId: string | null;
-  // onFirstMessage?: () => void;
   onFirstMessage?: () => Promise<string | null>;
   onOpenSidebar?: () => void;
 }
@@ -35,11 +34,6 @@ export function ChatContainer({
   }, [messages, isLoading]);
 
   const handleSend = async (content: string) => {
-    // if (!conversationId && onFirstMessage) {
-    //   onFirstMessage();
-    //   return;
-    // }
-    // await sendMessage(content);
 
     let targetConversationId = conversationId;
 
@@ -77,9 +71,6 @@ export function ChatContainer({
             <h1 className="text-base font-semibold text-foreground sm:text-lg">
               Unasat Chat
             </h1>
-            {/* <p className="text-xs text-muted-foreground">
-              Powered by Hugging Face
-            </p> */}
           </div>
         </div>
         <ThemeToggle />
@@ -95,14 +86,6 @@ export function ChatContainer({
                 alt="UNASAT"
                 className="h-10 w-auto object-contain"
               />
-
-              {/* <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white ring-1 ring-blue-glow/20">
-                <img
-                  src={unasatLogo}
-                  alt="UNASAT"
-                  className="h-10 w-auto object-contain"
-                />
-              </div> */}
               <div>
                 <p className="text-lg font-medium text-foreground">
                   Select or start a conversation

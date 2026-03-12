@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-// import { OpenAI } from "openai";
 import path from "path";
 import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
@@ -36,11 +35,6 @@ const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
-
-// const client = new OpenAI({
-//   baseURL: "https://router.huggingface.co/v1",
-//   apiKey: process.env.HF_TOKEN,
-// });
 
 const client = new InferenceClient(process.env.HF_TOKEN);
 
@@ -314,15 +308,7 @@ app.post("/api/chat", async (req, res) => {
 
     // Save user message
     const userMsg = chatMessages[chatMessages.length - 1];
-    // await db.insert(messages).values({
-    //   id: uuidv4(),
-    //   conversationId,
-    //   role: userMsg.role,
-    //   content: userMsg.content,
-    // });
 
-    // Update conversation title from first user message
-    // const msgCount = await db
     const conversationMessages = await db
       .select()
       .from(messages)
@@ -332,24 +318,9 @@ app.post("/api/chat", async (req, res) => {
       (message) => message.role === "user",
     ).length;
 
-    // if (msgCount.length === 1) {
-    //   const title =
-    //     userMsg.content.length > 50
-    //       ? userMsg.content.slice(0, 50) + "..."
-    //       : userMsg.content;
-    //   await db
-    //     .update(conversations)
-    //     .set({ title, updatedAt: new Date() })
-    //     .where(eq(conversations.id, conversationId));
-    // }
-
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
-
-    // const ragMatch = findBestRagMatch(userMsg.content);
-    // const hardcodedFactMatch = findHardcodedFactMatch(userMsg.content);
-    // const isSchoolQuestion = isSchoolDomainQuestion(userMsg.content);
 
     const persistAssistantAndClose = async (assistantContent: string) => {
       await db.insert(messages).values({
@@ -368,21 +339,10 @@ app.post("/api/chat", async (req, res) => {
       res.end();
     };
 
-    // res.setHeader("Content-Type", "text/event-stream");
-    // res.setHeader("Cache-Control", "no-cache");
-    // res.setHeader("Connection", "keep-alive");
-
     const streamLiteralResponse = async (content: string) => {
       res.write(`data: ${JSON.stringify({ content })}\n\n`);
       await persistAssistantAndClose(content);
     };
-
-    // if (hardcodedFactMatch) {
-    //   const safeAnswer = hardcodedFactMatch.answer;
-    //   res.write(`data: ${JSON.stringify({ content: safeAnswer })}\n\n`);
-    //   await persistAssistantAndClose(safeAnswer);
-    //   return;
-    // }
 
     const streamModelResponse = async (
       upstreamMessages: Array<{
@@ -458,14 +418,6 @@ app.post("/api/chat", async (req, res) => {
     const hardcodedFactMatch = findHardcodedFactMatch(userMsg.content);
     const isSchoolQuestion = isSchoolDomainQuestion(userMsg.content);
 
-    // if (!isSchoolQuestion && !ragMatch) {
-    //   res.write(
-    //     `data: ${JSON.stringify({ content: SCHOOL_ONLY_REFUSAL_MESSAGE })}\n\n`,
-    //   );
-    //   await persistAssistantAndClose(SCHOOL_ONLY_REFUSAL_MESSAGE);
-    //   return;
-    // }
-
     if (!isSchoolQuestion && !ragMatch) {
       await streamLiteralResponse(SCHOOL_ONLY_REFUSAL_MESSAGE);
       return;
@@ -491,8 +443,6 @@ app.post("/api/chat", async (req, res) => {
     if (isSchoolQuestion && !ragMatch) {
       const safeFallback =
         "Ik wil je geen foutieve schoolinformatie geven. Ik heb hiervoor geen geverifieerde UNASAT-bron in mijn kennisset. Controleer dit via de officiële UNASAT-kanalen of de administratie.";
-      // res.write(`data: ${JSON.stringify({ content: safeFallback })}\n\n`);
-      // await persistAssistantAndClose(safeFallback);
       await streamLiteralResponse(safeFallback);
       return;
     }
@@ -522,52 +472,7 @@ app.post("/api/chat", async (req, res) => {
           ...chatMessages,
         ];
     await streamModelResponse(upstreamMessages);
-
-    // Set SSE headers
-    // res.setHeader("Content-Type", "text/event-stream");
-    // res.setHeader("Cache-Control", "no-cache");
-    // res.setHeader("Connection", "keep-alive");
-
-    // const stream = await client.chat.completions.create({
-    //   model: "moonshotai/Kimi-K2-Instruct-0905:fastest",
-    //   messages: upstreamMessages,
-    //   stream: true,
-    // });
-
-    // const stream = client.chatCompletionStream({
-    //   model: "openai/gpt-oss-120b:groq",
-    //   messages: upstreamMessages,
-    //   // stream: true,
-    // });
-
-    // let assistantContent = "";
-
-    // for await (const chunk of stream) {
-    //   const content = chunk.choices[0]?.delta?.content || "";
-    //   if (content) {
-    //     assistantContent += content;
-    //     res.write(`data: ${JSON.stringify({ content })}\n\n`);
-    //   }
-    // }
-
-    // await persistAssistantAndClose(assistantContent);
-
-    // Save assistant message
-    // await db.insert(messages).values({
-    //   id: uuidv4(),
-    //   conversationId,
-    //   role: "assistant",
-    //   content: assistantContent,
-    // });
-
-    // Update conversation timestamp
-    // await db
-    //   .update(conversations)
-    //   .set({ updatedAt: new Date() })
-    //   .where(eq(conversations.id, conversationId));
-
-    // res.write("data: [DONE]\n\n");
-    // res.end();
+    
   } catch (error) {
     console.error(error);
     if (!res.headersSent) {
