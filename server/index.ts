@@ -72,7 +72,18 @@ const schoolDomainKeywords = new Set([
   "opleiding",
   "student",
   "sharepoint",
+  "unasat.sr",
+  "studie",
+  "college",
+  "faculteit",
+  "administratie",
 ]);
+
+const SCHOOL_ONLY_REFUSAL_MESSAGE =
+  "Ik kan alleen vragen beantwoorden die over UNASAT of schoolzaken gaan. Stel je vraag opnieuw met UNASAT-context, bijvoorbeeld over opleidingen, inschrijving, rooster, locaties of contactinformatie.";
+
+const SCHOOL_ONLY_SYSTEM_PROMPT =
+  "Je bent een UNASAT-assistent. Beantwoord uitsluitend vragen die over UNASAT of schoolzaken gaan. Als een vraag niet over UNASAT/school gaat, weiger dan kort en verwijs de gebruiker om een UNASAT-gerelateerde vraag te stellen. Verzin geen feiten. Als informatie ontbreekt, zeg dat duidelijk en verwijs naar officiële UNASAT-kanalen.";
 
 const hardcodedFacts: HardcodedFact[] = [
   {
@@ -352,6 +363,14 @@ app.post("/api/chat", async (req, res) => {
       return;
     }
 
+    if (!isSchoolQuestion && !ragMatch) {
+      res.write(
+        `data: ${JSON.stringify({ content: SCHOOL_ONLY_REFUSAL_MESSAGE })}\n\n`,
+      );
+      await persistAssistantAndClose(SCHOOL_ONLY_REFUSAL_MESSAGE);
+      return;
+    }
+
     if (isSchoolQuestion && !ragMatch) {
       const safeFallback =
         "Ik wil je geen foutieve schoolinformatie geven. Ik heb hiervoor geen geverifieerde UNASAT-bron in mijn kennisset. Controleer dit via de officiële UNASAT-kanalen of de administratie.";
@@ -364,8 +383,12 @@ app.post("/api/chat", async (req, res) => {
       ? [
           {
             role: "system" as const,
+            content: SCHOOL_ONLY_SYSTEM_PROMPT,
+          },
+          {
+            role: "system" as const,
             content:
-              "Je bent een behulpzame UNASAT-assistent. Gebruik uitsluitend de meegeleverde kennis als primaire bron. Als de kennis niet voldoende is, zeg dat expliciet en verwijs naar officiële UNASAT-kanalen.",
+              "Gebruik uitsluitend de meegeleverde kennis als primaire bron. Als de kennis niet voldoende is, zeg dat expliciet en verwijs naar officiële UNASAT-kanalen.",
           },
           ...chatMessages.slice(0, -1),
           {
@@ -373,7 +396,13 @@ app.post("/api/chat", async (req, res) => {
             content: `${userMsg.content}\n\nGebruik deze kennis als context:\nVraag: ${ragMatch.question}\nAntwoord: ${ragMatch.answer}\n\nGeef een duidelijk, kort antwoord in dezelfde taal als de gebruiker en blijf binnen deze kennis.`,
           },
         ]
-      : chatMessages;
+      : [
+          {
+            role: "system" as const,
+            content: SCHOOL_ONLY_SYSTEM_PROMPT,
+          },
+          ...chatMessages,
+        ];
 
     // Set SSE headers
     res.setHeader("Content-Type", "text/event-stream");
