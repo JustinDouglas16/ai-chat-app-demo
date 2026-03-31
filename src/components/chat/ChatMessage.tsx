@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Check, Copy } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import type { Message } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -43,18 +42,6 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
   return (
     <div className={cn("flex items-start gap-3", isUser && "flex-row-reverse")}>
-      <Avatar className="h-8 w-8 shrink-0">
-        <AvatarFallback
-          className={cn(
-            "text-xs font-medium",
-            isUser
-              ? "bg-[rgba(211,85,0,1)] text-white"
-              : "bg-[rgba(0,29,109,1)] text-white",
-          )}
-        >
-          {isUser ? "You" : "AI"}
-        </AvatarFallback>
-      </Avatar>
 
       <div
         className={cn(
