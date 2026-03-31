@@ -2,10 +2,6 @@
 
 A chat interface powered by Hugging Face's API router, built with React, TypeScript, shadcn/ui, Tailwind CSS v4, and Express.
 
-## Web app link
-
-Link to the web app: [Unasat AI Chat App](https://ai-chat-app-demo.onrender.com/)
-
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
 ![React](https://img.shields.io/badge/React-19-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
