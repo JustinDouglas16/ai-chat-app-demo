@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import path from "path";
+import rateLimit from "express-rate-limit";
 import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
 import { eq, desc, asc } from "drizzle-orm";
@@ -472,7 +473,6 @@ app.post("/api/chat", async (req, res) => {
           ...chatMessages,
         ];
     await streamModelResponse(upstreamMessages);
-    
   } catch (error) {
     console.error(error);
     if (!res.headersSent) {
@@ -487,9 +487,30 @@ app.post("/api/chat", async (req, res) => {
 });
 
 // Serve built frontend in production
-app.use(express.static(path.join(__dirname, "../dist")));
-app.get("/{*splat}", (_req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
+// app.use(express.static(path.join(__dirname, "../dist")));
+// app.get("/{*splat}", (_req, res) => {
+//   res.sendFile(path.join(__dirname, "../dist/index.html"));
+// });
+
+const distDir = path.join(__dirname, "../dist");
+
+const staticLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 1000,
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+});
+
+app.use(
+  "/",
+  staticLimiter,
+  express.static(distDir, {
+    index: false,
+  }),
+);
+
+app.get("/{*splat}", staticLimiter, (_req, res) => {
+  res.sendFile(path.join(distDir, "index.html"));
 });
 
 app.listen(PORT, () => {
